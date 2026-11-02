@@ -6,3 +6,4 @@ Dashboard interactivo para la gestión y seguimiento del área de alistamiento y
 - HTML5 / CSS3 / JavaScript
 - Tailwind CSS
 - Despliegue en Vercel
+
