@@ -7,3 +7,5 @@ Dashboard interactivo para la gestión y seguimiento del área de alistamiento y
 - Tailwind CSS
 - Despliegue en Vercel
 
+
+<!-- vercel sync test -->
