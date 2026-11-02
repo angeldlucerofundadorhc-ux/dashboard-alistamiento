@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Madero Automotores · Centro de Alistamiento & Taller</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at 10% 20%, rgba(245, 240, 235, 0.98), rgba(238, 231, 222, 0.94) 50%, rgba(230, 222, 212, 0.98) 100%);
+      min-height: 100vh;
+      color: #1c1917;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Apple Glassmorphism Delicate System */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.76);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      border-radius: 1.25rem;
+      box-shadow: 0 10px 36px -10px rgba(45, 35, 25, 0.07), 0 1px 3px 0 rgba(0, 0, 0, 0.02);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @media (min-width: 640px) {
+      .glass-card {
+        border-radius: 1.5rem;
+      }
+    }
+
+    .glass-card:hover {
+      box-shadow: 0 16px 44px -10px rgba(45, 35, 25, 0.11), 0 2px 6px 0 rgba(0, 0, 0, 0.03);
+    }
+
+    .glass-card-dark {
+      background: rgba(28, 25, 23, 0.92);
+      backdrop-filter: blur(32px) saturate(190%);
+      -webkit-backdrop-filter: blur(32px) saturate(190%);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 1.25rem;
+      color: #fafaf9;
+      box-shadow: 0 16px 44px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    @media (min-width: 640px) {
+      .glass-card-dark {
+        border-radius: 1.5rem;
+      }
+    }
+
+    /* Delicate Badges */
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+
+    .badge-emerald {
+      background: rgba(16, 185, 129, 0.12);
+      color: #065f46;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .badge-amber {
+      background: rgba(245, 158, 11, 0.14);
+      color: #92400e;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+    }
+
+    .badge-blue {
+      background: rgba(59, 130, 246, 0.14);
+      color: #1e40af;
+      border: 1px solid rgba(59, 130, 246, 0.35);
+    }
+
+    .badge-purple {
+      background: rgba(168, 85, 247, 0.14);
+      color: #6b21a8;
+      border: 1px solid rgba(168, 85, 247, 0.35);
+    }
+
+    .badge-red {
+      background: rgba(239, 68, 68, 0.12);
+      color: #991b1b;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    /* Hide scrollbar for clean horizontal scrolls */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.02);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(120, 113, 108, 0.25);
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(120, 113, 108, 0.45);
+    }
+
+    /* VisionOS Floating Dock */
+    .vision-dock {
+      background: rgba(255, 255, 255, 0.90);
+      backdrop-filter: blur(32px) saturate(200%);
+      -webkit-backdrop-filter: blur(32px) saturate(200%);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 0 16px 40px -8px rgba(45, 35, 25, 0.22), 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .tab-btn-active {
+      background: #1c1917 !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 12px -2px rgba(28, 25, 23, 0.35);
+    }
+  </style>
+</head>
+<body class="p-3 sm:p-6 lg:p-8 pb-32 sm:pb-28">
+
+  <!-- TOP APP BAR -->
+  <header class="max-w-7xl mx-auto mb-5 sm:mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 glass-card p-4 sm:px-6">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-stone-900 text-white flex items-center justify-center font-bold text-base sm:text-lg shadow-sm shrink-0">
+        M
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <h1 class="text-sm sm:text-lg font-extrabold tracking-tight text-stone-900 leading-tight">Madero Automotores</h1>
+          <span class="badge-pill bg-stone-200/80 text-stone-700 text-[10px]">Alistamiento</span>
+        </div>
+        <p class="text-[11px] sm:text-xs text-stone-500">Monitoreo Operativo de Vehículos, Taller y Pre-Entrega</p>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2.5 w-full sm:w-auto justify-between sm:justify-end pt-2 sm:pt-0 border-t sm:border-t-0 border-stone-200/60">
+      <div class="flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl bg-stone-100/90 border border-stone-200 text-[11px] sm:text-xs">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="text-stone-700 font-medium">Lucy:</span>
+        <span id="header-lucy-status" class="text-emerald-700 font-semibold">Conectado (Live)</span>
+      </div>
+
+      <button onclick="openLucySyncModal()" class="px-3 py-1 sm:py-1.5 rounded-xl bg-white text-stone-800 border border-stone-300 text-[11px] sm:text-xs font-semibold hover:bg-stone-50 transition shadow-xs flex items-center gap-1.5 shrink-0">
+        <svg class="w-3.5 h-3.5 text-stone-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+        <span>Sincronizar</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN WRAPPER -->
+  <main class="max-w-7xl mx-auto space-y-5 sm:space-y-6">
+
+    <!-- EXECUTIVE OPERATIONAL CARDS (4 FLOW PILLARS) -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+      
+      <!-- Card 1: Pre-Entrega (Reservados) -->
+      <div class="glass-card p-4 sm:p-5 cursor-pointer hover:border-blue-300 transition" onclick="switchTabAndFilter('inventario', 'RESERVADA')">
+        <div class="flex items-center justify-between mb-2 sm:mb-3">
+          <span class="text-xs font-bold text-blue-800 uppercase tracking-wider flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-blue-600"></span> Prioridad Pre-Entrega
+          </span>
+          <span id="kpi-predelivery-badge" class="badge-pill badge-blue">4 un.</span>
+        </div>
+        <div class="flex items-baseline gap-2">
+          <span id="kpi-predelivery-count" class="text-2xl sm:text-3xl font-extrabold text-stone-900 font-mono">4</span>
+          <span class="text-xs text-blue-700 font-semibold">Vendidos / Comprometidos</span>
+        </div>
+        <p id="kpi-predelivery-desc" class="text-xs text-stone-500 mt-1.5 sm:mt-2">Alistamiento final. <strong class="text-rose-600 font-bold">1 auto aún en taller</strong>.</p>
+        <div class="mt-2.5 pt-2.5 sm:mt-3 sm:pt-3 border-t border-stone-200/60 flex items-center justify-between text-[11px] text-stone-600 font-medium">
+          <span>Verificación y lavado</span>
+          <span class="text-blue-600 font-bold">Ver lista →</span>
+        </div>
+      </div>
+
+      <!-- Card 2: En Taller / Reparación -->
+      <div class="glass-card p-4 sm:p-5 cursor-pointer hover:border-amber-300 transition" onclick="switchTabAndFilter('inventario', 'TALLER')">
+        <div class="flex items-center justify-between mb-2 sm:mb-3">
+          <span class="text-xs font-bold text-amber-800 uppercase tracking-wider flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-amber-500"></span> En Taller / Reparación
+          </span>
+          <span id="kpi-taller-badge" class="badge-pill badge-amber">25 un.</span>
+        </div>
+        <div class="flex items-baseline gap-2">
+          <span id="kpi-taller-count" class="text-2xl sm:text-3xl font-extrabold text-stone-900 font-mono">25</span>
+          <span id="kpi-taller-pct" class="text-xs text-amber-700 font-semibold">15.1% del stock</span>
+        </div>
+        <p class="text-xs text-stone-500 mt-1.5 sm:mt-2">Mecánica y chapa en 8 talleres externos.</p>
+        <div class="mt-2.5 pt-2.5 sm:mt-3 sm:pt-3 border-t border-stone-200/60 flex items-center justify-between text-[11px] text-stone-600 font-medium">
+          <span id="kpi-taller-days">Permanencia media: <strong class="text-stone-800">298 d.</strong></span>
+          <span class="text-amber-700 font-bold">Auditar →</span>
+        </div>
+      </div>
+
+      <!-- Card 3: Pendientes de Foto & Lavado -->
+      <div class="glass-card p-4 sm:p-5 cursor-pointer hover:border-rose-300 transition" onclick="switchTabAndFilter('inventario', 'SIN_FOTO')">
+        <div class="flex items-center justify-between mb-2 sm:mb-3">
+          <span class="text-xs font-bold text-rose-800 uppercase tracking-wider flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-rose-500"></span> Pendientes de Foto
+          </span>
+          <span id="kpi-sinfoto-badge" class="badge-pill badge-red font-semibold">74 un.</span>
+        </div>
+        <div class="flex items-baseline gap-2">
+          <span id="kpi-sinfoto-count" class="text-2xl sm:text-3xl font-extrabold text-stone-900 font-mono">74</span>
+          <span id="kpi-sinfoto-pct" class="text-xs text-rose-700 font-semibold">44.6% sin publicar</span>
+        </div>
+        <p class="text-xs text-stone-500 mt-1.5 sm:mt-2">Lavado estético y sesión para publicación web.</p>
+        <div class="mt-2.5 pt-2.5 sm:mt-3 sm:pt-3 border-t border-stone-200/60 flex items-center justify-between text-[11px] text-stone-600 font-medium">
+          <span id="kpi-confoto-sub">Con Foto: <strong class="text-emerald-700">92 (55%)</strong></span>
+          <span class="text-rose-600 font-bold">Plan fotos →</span>
+        </div>
+      </div>
+
+      <!-- Card 4: Listos en Salón (Disponibles) -->
+      <div class="glass-card p-4 sm:p-5 cursor-pointer hover:border-emerald-300 transition" onclick="switchTabAndFilter('inventario', 'DISPONIBLE')">
+        <div class="flex items-center justify-between mb-2 sm:mb-3">
+          <span class="text-xs font-bold text-emerald-800 uppercase tracking-wider flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Listos en Salón
+          </span>
+          <span id="kpi-disponibles-badge" class="badge-pill badge-emerald">138 un.</span>
+        </div>
+        <div class="flex items-baseline gap-2">
+          <span id="kpi-disponibles-count" class="text-2xl sm:text-3xl font-extrabold text-stone-900 font-mono">138</span>
+          <span id="kpi-disponibles-pct" class="text-xs text-emerald-700 font-semibold">83.1% del parque</span>
+        </div>
+        <p class="text-xs text-stone-500 mt-1.5 sm:mt-2">Disponibles para exhibición y prueba inmediata.</p>
+        <div class="mt-2.5 pt-2.5 sm:mt-3 sm:pt-3 border-t border-stone-200/60 flex items-center justify-between text-[11px] text-stone-600 font-medium">
+          <span id="kpi-disponibles-sub">En 7 sucursales</span>
+          <span class="text-emerald-700 font-bold">Ver stock →</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- TABS CONTAINER -->
+    
+    <!-- TAB 1: FLUJO OPERATIVO (RESUMEN) -->
+    <section id="tab-flujo" class="space-y-5 sm:space-y-6">
+      
+      <!-- Prioridad Pre-Entrega & Urgencias de Taller -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6">
+        
+        <!-- Left: Pre-Entrega Inmediata -->
+        <div class="lg:col-span-2 glass-card p-4 sm:p-6">
+          <div class="flex items-center justify-between mb-4 pb-3 border-b border-stone-200/60">
+            <div>
+              <h2 class="text-sm sm:text-base font-extrabold text-stone-900 tracking-tight flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span> Unidades Reservadas / Pre-Entrega
+              </h2>
+              <p class="text-xs text-stone-500 mt-0.5">Vehículos comprometidos que requieren alistamiento final para el comprador.</p>
+            </div>
+            <span class="badge-pill badge-blue font-bold">4 autos</span>
+          </div>
+
+          <div class="space-y-3" id="pre-delivery-list">
+            <!-- Injected via renderPreDeliveryMini() -->
+          </div>
+        </div>
+
+        <!-- Right: Semáforo de Permanencia en Alistamiento -->
+        <div class="glass-card-dark p-5 sm:p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-semibold text-stone-300 uppercase tracking-wider">Aging de Alistamiento</span>
+              <span id="aging-total-badge" class="badge-pill bg-amber-500/20 text-amber-300 border border-amber-400/30 text-[10px]">166 unidades</span>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold text-white mb-1">Permanencia en Parque</h3>
+            <p class="text-xs text-stone-400 mb-4 sm:mb-5">Días transcurridos desde el ingreso de la unidad.</p>
+
+            <div class="space-y-2.5 sm:space-y-3" id="aging-bars-container">
+              <div>
+                <div class="flex justify-between text-xs mb-1">
+                  <span class="text-emerald-400 font-medium">0 - 30 días (Fresco)</span>
+                  <span class="text-stone-300 font-mono font-bold">38 un. (23%)</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-white/10 overflow-hidden">
+                  <div class="h-full bg-emerald-500 rounded-full" style="width: 23%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs mb-1">
+                  <span class="text-blue-400 font-medium">31 - 90 días (Normal)</span>
+                  <span class="text-stone-300 font-mono font-bold">42 un. (25%)</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-white/10 overflow-hidden">
+                  <div class="h-full bg-blue-500 rounded-full" style="width: 25%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs mb-1">
+                  <span class="text-amber-400 font-medium">91 - 180 días (Alerta)</span>
+                  <span class="text-stone-300 font-mono font-bold">25 un. (15%)</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-white/10 overflow-hidden">
+                  <div class="h-full bg-amber-500 rounded-full" style="width: 15%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs mb-1">
+                  <span class="text-rose-400 font-medium">181 - 365 días (Crítico)</span>
+                  <span class="text-stone-300 font-mono font-bold">17 un. (10%)</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-white/10 overflow-hidden">
+                  <div class="h-full bg-rose-400 rounded-full" style="width: 10%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs mb-1">
+                  <span class="text-red-500 font-medium">+365 días (Inmovilizado)</span>
+                  <span class="text-stone-200 font-mono font-bold">44 un. (27%)</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-white/10 overflow-hidden">
+                  <div class="h-full bg-rose-600 rounded-full" style="width: 27%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button onclick="switchTab('inventario')" class="mt-5 sm:mt-6 w-full py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition border border-white/15 text-center">
+            Ver Inventario Completo →
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Quick Taller Overview -->
+      <div class="glass-card p-4 sm:p-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 sm:mb-5 pb-3 sm:pb-4 border-b border-stone-200/60">
+          <div>
+            <h2 class="text-sm sm:text-base font-extrabold text-stone-900 tracking-tight flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Unidades en Taller Mecánico & Chapa (25 en servicio)
+            </h2>
+            <p class="text-xs text-stone-500 mt-0.5">Control de unidades actualmente en reparación o preparación mecánica.</p>
+          </div>
+          <button onclick="switchTab('talleres')" class="px-3 py-1.5 rounded-xl bg-stone-900 text-white text-xs font-semibold hover:bg-stone-800 transition self-start sm:self-auto">
+            Ver Todos los Talleres →
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4" id="taller-summary-cards">
+          <!-- Injected via renderTallerSummary() -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- TAB 2: INVENTARIO DE ALISTAMIENTO (TABLA CENTRAL) -->
+    <section id="tab-inventario" class="hidden space-y-4 sm:space-y-5">
+      <div class="glass-card p-4 sm:p-6">
+        
+        <!-- Header & Filter Toolbar -->
+        <div class="flex flex-col gap-4 mb-4 pb-4 border-b border-stone-300/40">
+          <div>
+            <h2 class="text-base sm:text-lg font-extrabold text-stone-900 tracking-tight">Inventario Físico de Alistamiento</h2>
+            <p class="text-xs text-stone-500 mt-0.5">166 vehículos registrados con estado operativo, ubicación y fotografía.</p>
+          </div>
+
+          <!-- Responsive Filter Bar -->
+          <div class="flex flex-col gap-3">
+            
+            <!-- Row 1: Search & Dropdowns -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <input type="text" id="filter-search" oninput="applyFilters()" placeholder="Buscar patente, modelo, color, taller..." class="px-3.5 py-2 rounded-xl bg-white/80 border border-stone-300 text-xs w-full focus:outline-none focus:ring-2 focus:ring-stone-400">
+
+              <select id="filter-brand" onchange="applyFilters()" class="px-3 py-2 rounded-xl bg-white/80 border border-stone-300 text-xs focus:outline-none w-full">
+                <option value="">Todas las Marcas</option>
+              </select>
+
+              <select id="filter-location" onchange="applyFilters()" class="px-3 py-2 rounded-xl bg-white/80 border border-stone-300 text-xs focus:outline-none w-full">
+                <option value="">Todas las Ubicaciones</option>
+              </select>
+            </div>
+
+            <!-- Row 2: Status Pills, Photo Pills & Export -->
+            <div class="flex flex-wrap items-center justify-between gap-2.5">
+              
+              <!-- Status Filter Pills -->
+              <div class="flex items-center gap-1 bg-stone-200/70 p-1 rounded-xl text-xs font-semibold overflow-x-auto max-w-full no-scrollbar">
+                <button onclick="setStatusFilter('ALL')" id="status-btn-ALL" class="px-2.5 py-1 rounded-lg bg-white text-stone-900 shadow-xs whitespace-nowrap">Todos</button>
+                <button onclick="setStatusFilter('RESERVADA')" id="status-btn-RESERVADA" class="px-2.5 py-1 rounded-lg text-stone-600 hover:text-stone-900 flex items-center gap-1 whitespace-nowrap">
+                  <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Pre-Entrega (4)
+                </button>
+                <button onclick="setStatusFilter('TALLER')" id="status-btn-TALLER" class="px-2.5 py-1 rounded-lg text-stone-600 hover:text-stone-900 flex items-center gap-1 whitespace-nowrap">
+                  <span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span> En Taller (25)
+                </button>
+                <button onclick="setStatusFilter('DISPONIBLE')" id="status-btn-DISPONIBLE" class="px-2.5 py-1 rounded-lg text-stone-600 hover:text-stone-900 flex items-center gap-1 whitespace-nowrap">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Disponibles (138)
+                </button>
+              </div>
+
+              <!-- Photo Filter Pills & Export Button -->
+              <div class="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-end">
+                <div class="flex items-center gap-1 bg-stone-200/70 p-1 rounded-xl text-xs font-semibold shrink-0">
+                  <button onclick="setPhotoFilter('ALL')" id="photo-btn-ALL" class="px-2.5 py-1 rounded-lg bg-white text-stone-900 shadow-xs whitespace-nowrap">Fotos</button>
+                  <button onclick="setPhotoFilter('CON_FOTO')" id="photo-btn-CON_FOTO" class="px-2.5 py-1 rounded-lg text-stone-600 hover:text-stone-900 flex items-center gap-1 whitespace-nowrap">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Con Foto (92)
+                  </button>
+                  <button onclick="setPhotoFilter('SIN_FOTO')" id="photo-btn-SIN_FOTO" class="px-2.5 py-1 rounded-lg text-stone-600 hover:text-stone-900 flex items-center gap-1 whitespace-nowrap">
+                    <span class="w-1.5 h-1.5 rounded-full bg-rose-600"></span> Sin Foto (74)
+                  </button>
+                </div>
+
+                <button onclick="exportOperationalCSV()" class="px-3 py-1.5 rounded-xl bg-white text-stone-800 border border-stone-300 text-xs font-semibold hover:bg-stone-100 flex items-center gap-1 shadow-xs whitespace-nowrap shrink-0">
+                  <svg class="w-3.5 h-3.5 text-stone-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                  <span>CSV</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Status Summary Banner -->
+        <div class="mb-3 px-3.5 py-2.5 rounded-2xl bg-white/60 border border-stone-200 flex flex-col md:flex-row items-start md:items-center justify-between gap-2.5 text-xs text-stone-700">
+          <div class="flex flex-wrap items-center gap-2.5">
+            <span class="flex items-center gap-1.5"><span class="badge-pill badge-blue">Pre-Entrega</span> <strong>4 un.</strong></span>
+            <span class="flex items-center gap-1.5"><span class="badge-pill badge-amber">En Taller</span> <strong>25 un. (15%)</strong></span>
+            <span class="flex items-center gap-1.5"><span class="badge-pill badge-emerald">Disponibles</span> <strong>138 un. (83%)</strong></span>
+          </div>
+          <div class="flex flex-wrap items-center gap-2.5">
+            <span class="flex items-center gap-1.5"><span class="badge-pill badge-emerald">Con Foto</span> <strong>92</strong></span>
+            <span class="flex items-center gap-1.5"><span class="badge-pill badge-red font-semibold">Sin Foto</span> <strong>74</strong></span>
+          </div>
+        </div>
+
+        <!-- Mobile Scroll Hint -->
+        <div class="sm:hidden flex items-center gap-1.5 text-[11px] text-stone-500 mb-2 font-medium bg-stone-100/70 p-2 rounded-xl">
+          <span>👉</span> <span>Deslizá hacia la derecha para ver kilometraje, taller y fotos</span>
+        </div>
+
+        <!-- Table Container with Smooth Touch Scroll -->
+        <div class="overflow-x-auto -mx-1 sm:mx-0 rounded-xl" style="-webkit-overflow-scrolling: touch;">
+          <table class="w-full text-left text-xs whitespace-nowrap min-w-[700px]">
+            <thead>
+              <tr class="border-b border-stone-400/20 text-stone-600 font-semibold text-[11px] select-none">
+                <th class="py-2.5 px-3 cursor-pointer" onclick="sortTable('marca')">Vehículo ⬍</th>
+                <th class="py-2.5 px-2 cursor-pointer" onclick="sortTable('dominio')">Patente ⬍</th>
+                <th class="py-2.5 px-2 cursor-pointer" onclick="sortTable('anio')">Año ⬍</th>
+                <th class="py-2.5 px-2 cursor-pointer" onclick="sortTable('color')">Color ⬍</th>
+                <th class="py-2.5 px-2 text-right cursor-pointer" onclick="sortTable('kms')">Kms ⬍</th>
+                <th class="py-2.5 px-2 text-center">Motor / Trans</th>
+                <th class="py-2.5 px-3 cursor-pointer" onclick="sortTable('ubicacion')">Ubicación / Taller ⬍</th>
+                <th class="py-2.5 px-2 text-center cursor-pointer" onclick="sortTable('dias')">Días ⬍</th>
+                <th class="py-2.5 px-2 text-center cursor-pointer" onclick="sortTable('tiene_foto')">Fotos ⬍</th>
+                <th class="py-2.5 px-2 text-center cursor-pointer" onclick="sortTable('estado')">Estado ⬍</th>
+              </tr>
+            </thead>
+            <tbody id="operational-stock-tbody" class="divide-y divide-stone-200/50">
+              <!-- Injected via renderOperationalTable() -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Table Footer -->
+        <div class="flex flex-col sm:flex-row items-center justify-between pt-3.5 mt-3.5 border-t border-stone-300/40 text-xs text-stone-500 gap-2">
+          <span id="filtered-stock-count" class="font-medium">Mostrando 166 unidades</span>
+          <div class="text-[11px] text-stone-500 font-medium">
+            Madero Automotores · Datos Operativos en vivo
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 3: CONTROL DE TALLERES & PROVEEDORES -->
+    <section id="tab-talleres" class="hidden space-y-4 sm:space-y-6">
+      <div class="glass-card p-4 sm:p-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5 pb-3 sm:pb-4 border-b border-stone-200/60">
+          <div>
+            <h2 class="text-base sm:text-lg font-extrabold text-stone-900 tracking-tight">Talleres Mecánicos y Proveedores</h2>
+            <p class="text-xs text-stone-500 mt-0.5">Seguimiento de las 25 unidades en talleres externos, chapa y pintura.</p>
+          </div>
+          <span class="badge-pill badge-amber font-bold text-xs self-start sm:self-auto">25 en taller</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5" id="workshops-cards-grid">
+          <!-- Injected via renderWorkshopsGrid() -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: PLAN DE FOTOGRAFÍA & DETAILING -->
+    <section id="tab-fotografia" class="hidden space-y-4 sm:space-y-6">
+      <div class="glass-card p-4 sm:p-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-4 sm:mb-5 pb-3 sm:pb-4 border-b border-stone-200/60">
+          <div>
+            <h2 class="text-base sm:text-lg font-extrabold text-stone-900 tracking-tight">Plan de Fotografía y Detailing</h2>
+            <p class="text-xs text-stone-500 mt-0.5">Control de cobertura visual para publicación web y mercadeo digital.</p>
+          </div>
+          
+          <div class="flex items-center gap-2 self-start sm:self-auto">
+            <span class="text-xs font-semibold text-stone-600">Cobertura:</span>
+            <div class="flex items-center gap-1.5">
+              <span class="text-sm font-bold text-emerald-700 font-mono">92/166</span>
+              <span class="badge-pill badge-emerald">55.4%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="mb-5 p-3.5 sm:p-4 rounded-2xl bg-white/60 border border-stone-200">
+          <div class="flex justify-between text-xs mb-1.5 font-medium">
+            <span class="text-emerald-800">Con Foto: <strong>92 autos</strong></span>
+            <span class="text-rose-700 font-semibold">Sin Foto: <strong>74 autos</strong></span>
+          </div>
+          <div class="w-full h-3 rounded-full bg-stone-200 overflow-hidden flex">
+            <div class="h-full bg-emerald-500" style="width: 55.4%"></div>
+            <div class="h-full bg-rose-400" style="width: 44.6%"></div>
+          </div>
+        </div>
+
+        <!-- Pending Photography by Branch -->
+        <div class="space-y-3.5 sm:space-y-4" id="photo-plan-by-branch">
+          <!-- Injected via renderPhotoPlan() -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 5: PRE-ENTREGA (RESERVADOS) -->
+    <section id="tab-entrega" class="hidden space-y-4 sm:space-y-6">
+      <div class="glass-card p-4 sm:p-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-5 pb-3 sm:pb-4 border-b border-stone-200/60">
+          <div>
+            <h2 class="text-base sm:text-lg font-extrabold text-stone-900 tracking-tight">Protocolo de Pre-Entrega (Reservados)</h2>
+            <p class="text-xs text-stone-500 mt-0.5">Checklist de alistamiento integral para entrega formal al comprador.</p>
+          </div>
+          <span class="badge-pill badge-blue font-bold text-xs self-start sm:self-auto">4 clientes en espera</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5" id="pre-delivery-cards-grid">
+          <!-- Injected via renderPreDeliveryGrid() -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- VISIONOS FLOATING BOTTOM DOCK / RESPONSIVE TAB BAR -->
+  <div class="fixed bottom-3 sm:bottom-5 left-0 right-0 sm:left-1/2 sm:-translate-x-1/2 sm:w-auto px-3 sm:px-0 z-40 flex justify-center pointer-events-none">
+    
+    <!-- Mobile Tab Bar (< 640px) -->
+    <nav class="sm:hidden vision-dock w-full max-w-md p-1.5 rounded-2xl grid grid-cols-5 gap-1 text-[10px] font-semibold pointer-events-auto">
+      <button onclick="switchTab('flujo')" id="dock-btn-flujo-mob" class="py-1.5 px-0.5 rounded-xl text-stone-600 flex flex-col items-center justify-center gap-1 transition tab-btn-active">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+        <span class="truncate">Flujo</span>
+      </button>
+
+      <button onclick="switchTab('inventario')" id="dock-btn-inventario-mob" class="py-1.5 px-0.5 rounded-xl text-stone-600 flex flex-col items-center justify-center gap-1 transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+        <span class="truncate" id="mob-label-stock">Stock (166)</span>
+      </button>
+
+      <button onclick="switchTab('talleres')" id="dock-btn-talleres-mob" class="py-1.5 px-0.5 rounded-xl text-stone-600 flex flex-col items-center justify-center gap-1 transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+        <span class="truncate" id="mob-label-taller">Taller (25)</span>
+      </button>
+
+      <button onclick="switchTab('fotografia')" id="dock-btn-fotografia-mob" class="py-1.5 px-0.5 rounded-xl text-stone-600 flex flex-col items-center justify-center gap-1 transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+        <span class="truncate" id="mob-label-fotos">Fotos (74)</span>
+      </button>
+
+      <button onclick="switchTab('entrega')" id="dock-btn-entrega-mob" class="py-1.5 px-0.5 rounded-xl text-stone-600 flex flex-col items-center justify-center gap-1 transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <span class="truncate" id="mob-label-entrega">Entrega (4)</span>
+      </button>
+    </nav>
+
+    <!-- Desktop / Tablet Dock (>= 640px) -->
+    <nav class="hidden sm:flex vision-dock px-3 py-2 rounded-2xl items-center gap-1.5 text-xs font-semibold pointer-events-auto">
+      <button onclick="switchTab('flujo')" id="dock-btn-flujo" class="px-3.5 py-1.5 rounded-xl text-stone-600 hover:text-stone-900 transition flex items-center gap-1.5 tab-btn-active">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+        <span>Flujo Operativo</span>
+      </button>
+
+      <button onclick="switchTab('inventario')" id="dock-btn-inventario" class="px-3.5 py-1.5 rounded-xl text-stone-600 hover:text-stone-900 transition flex items-center gap-1.5">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+        <span id="dock-label-stock">Inventario (166)</span>
+      </button>
+
+      <button onclick="switchTab('talleres')" id="dock-btn-talleres" class="px-3.5 py-1.5 rounded-xl text-stone-600 hover:text-stone-900 transition flex items-center gap-1.5">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+        <span id="dock-label-taller">Talleres (25)</span>
+      </button>
+
+      <button onclick="switchTab('fotografia')" id="dock-btn-fotografia" class="px-3.5 py-1.5 rounded-xl text-stone-600 hover:text-stone-900 transition flex items-center gap-1.5">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+        <span id="dock-label-fotos">Fotos (74 pend.)</span>
+      </button>
+
+      <button onclick="switchTab('entrega')" id="dock-btn-entrega" class="px-3.5 py-1.5 rounded-xl text-stone-600 hover:text-stone-900 transition flex items-center gap-1.5">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <span id="dock-label-entrega">Pre-Entrega (4)</span>
+      </button>
+    </nav>
+
+  </div>
+
+  <!-- LUCY LIVE SYNC MODAL -->
+  <div id="lucy-sync-modal" class="fixed inset-0 bg-stone-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="glass-card max-w-md w-full p-5 sm:p-6 bg-white/95">
+      <div class="flex items-center justify-between pb-3 mb-4 border-b border-stone-200">
+        <h3 class="font-bold text-stone-900 text-sm">Sincronización con Lucy DMS</h3>
+        <button onclick="closeLucySyncModal()" class="text-stone-400 hover:text-stone-700 font-mono text-base">&times;</button>
+      </div>
+      <p class="text-xs text-stone-600 mb-4 leading-relaxed">
+        El centro de alistamiento consulta el endpoint operativo seguro de Lucy DMS. Los datos financieros y de precios se omiten por diseño para preservar la confidencialidad.
+      </p>
+
+      <div id="sync-feedback" class="text-xs p-3 rounded-xl mb-4 font-mono hidden"></div>
+
+      <div class="flex justify-end gap-2">
+        <button onclick="closeLucySyncModal()" class="px-3 py-1.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-semibold">Cerrar</button>
+        <button onclick="triggerLucyLiveSync()" id="btn-force-sync" class="px-3.5 py-1.5 rounded-xl bg-stone-900 hover:bg-stone-800 text-white text-xs font-semibold flex items-center gap-1.5">
+          Actualizar Stock Ahora
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    // Embedded Sanitized Operational Data (Zero Financial Fields)
+    let DATA = {"meta": {"titulo": "Madero Automotores · Centro de Alistamiento & Taller", "subtitulo": "Monitoreo Operativo de Vehículos, Taller, Detailing y Pre-Entrega", "version": "1.0.0", "updated_at": "2026-10-28T10:00:00Z", "total_unidades": 166}, "operational_summary": {"total_unidades": 166, "disponibles": 138, "disponibles_pct": 83.1, "en_taller": 25, "en_taller_pct": 15.1, "reservadas": 4, "reservadas_pct": 2.4, "con_foto": 92, "con_foto_pct": 55.4, "sin_foto": 74, "sin_foto_pct": 44.6, "dias_stock_promedio": 229.9, "dias_taller_promedio": 297.8}, "stock_items": [{"id": 1, "marca": "AUDI", "modelo": "A3", "version": "A3 1.4T FSI", "trans": "MT", "combust": "NAFTA", "kms": 180000, "anio": 2014, "tipo": "SEDAN 5 PUERTAS", "dominio": "NQQ809", "color": "GRIS", "ubicacion": "BILOVA S.A.S (CHAPISTA NEUQUEN)", "is_taller": true, "dias": 22, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 2, "marca": "AUDI", "modelo": "Q2", "version": "Q2 2.0 40 FSI S-TRONIC QUATTRO", "trans": "AT", "combust": "NAFTA", "kms": 0, "anio": 2026, "tipo": "SUV", "dominio": "OKM", "color": "GRIS ROCIO METALIZADO", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 296, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 4}, {"id": 3, "marca": "BMW", "modelo": "240", "version": "240I COUPE  M PACKAGE", "trans": "AT", "combust": "NAFTA", "kms": 42349, "anio": 2017, "tipo": "COUPE", "dominio": "AB214HO", "color": "BLANCO", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 40, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 4, "marca": "CF MOTO", "modelo": "CALLE", "version": "NK 650", "trans": "MT", "combust": "NAFTA", "kms": 0, "anio": 2018, "tipo": "MOTOCICLETA", "dominio": "A060LPA", "color": "NEGRO", "ubicacion": "MADERO ALEM 828", "is_taller": false, "dias": 345, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 6}, {"id": 5, "marca": "CHEVROLET", "modelo": "TRACKER", "version": "TRACKER 1.2  LTZ AT", "trans": "AT", "combust": "NAFTA", "kms": 60000, "anio": 2023, "tipo": "RURAL", "dominio": "AG020IL", "color": "BLANCO", "ubicacion": "Sin asignar / Salón no especificado", "is_taller": false, "dias": 7, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 6, "marca": "CHEVROLET", "modelo": "TRAILBLAZER", "version": "TRAILBLAZER 2.8 4X4 PREMIER AT", "trans": "AT", "combust": "DIESEL", "kms": 93000, "anio": 2020, "tipo": "TODO TERRENO", "dominio": "AE320DD", "color": "GRIS", "ubicacion": "MADERO ALEM 828", "is_taller": false, "dias": 43, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 7, "marca": "CHEVROLET", "modelo": "TRAILBLAZER", "version": "TRAILBLAZER 2.8 4x4 LTZ AT", "trans": "AT", "combust": "DIESEL", "kms": 171119, "anio": 2018, "tipo": "TODO TERRENO", "dominio": "AC204ZY", "color": "GRIS PLATA", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 8, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 8, "marca": "CHEVROLET", "modelo": "TRACKER", "version": "TRACKER 1.8 LTZ  4X2", "trans": "MT", "combust": "NAFTA", "kms": 140000, "anio": 2015, "tipo": "SUV", "dominio": "PGJ154", "color": "NEGRO", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 491, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 9, "marca": "CHEVROLET", "modelo": "TRACKER", "version": "TRACKER 1.8 LTZ  4X2", "trans": "MT", "combust": "NAFTA", "kms": 145000, "anio": 2013, "tipo": "SUV", "dominio": "NDK580", "color": "BLANCA", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 212, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 4}, {"id": 10, "marca": "CHEVROLET", "modelo": "TRACKER", "version": "TRACKER 1.2  LTZ AT", "trans": "AT", "combust": "NAFTA", "kms": 51000, "anio": 2023, "tipo": "SUV", "dominio": "AG123OW", "color": "ROJO", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 147, "aging_cat": "91-180 días", "aging_status": "Alerta", "aging_badge": "yellow", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 11, "marca": "CHEVROLET", "modelo": "PRISMA", "version": "PRISMA 1.4 LS JOY", "trans": "MT", "combust": "NAFTA", "kms": 123000, "anio": 2018, "tipo": "SEDAN 4 PUERTAS", "dominio": "AD398SB", "color": "GRIS", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 287, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 12, "marca": "CHEVROLET", "modelo": "PRISMA", "version": "PRISMA 1.4 LS JOY", "trans": "MT", "combust": "NAFTA", "kms": 122000, "anio": 2018, "tipo": "SEDAN 4 PUERTAS", "dominio": "AC261XW", "color": "GRIS PLATA", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 46, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 13, "marca": "CHEVROLET", "modelo": "PICK-UP S-10", "version": "PICK-UP S10 LT 4x4", "trans": "MT", "combust": "NAFTA", "kms": 0, "anio": 2016, "tipo": "PICKUP", "dominio": "PJD472", "color": "GRIS", "ubicacion": "BILOVA S.A.S (CHAPISTA NEUQUEN)", "is_taller": true, "dias": 21, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 14, "marca": "CHEVROLET", "modelo": "PICK-UP S-10", "version": "PICK-UP S-10 HC 4X2 MT", "trans": "MT", "combust": "DIESEL", "kms": 156500, "anio": 2018, "tipo": "PICKUP", "dominio": "AC545ED", "color": "BLANCO", "ubicacion": "MADERO ALEM 828", "is_taller": false, "dias": 58, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 15, "marca": "CHEVROLET", "modelo": "PICK-UP S-10", "version": "P-UP S10 2.8TD 4x2 LS", "trans": "MT", "combust": "DIESEL", "kms": 90000, "anio": 2018, "tipo": "PICKUP", "dominio": "AE431NI", "color": "GRIS", "ubicacion": "Sin asignar / Salón no especificado", "is_taller": false, "dias": 25, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 16, "marca": "CHEVROLET", "modelo": "PICK-UP S-10", "version": "P-UP S10 2.8 CD", "trans": "MT", "combust": "DIESEL", "kms": 150000, "anio": 2010, "tipo": "PICKUP", "dominio": "IPX366", "color": "Blanco", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 152, "aging_cat": "91-180 días", "aging_status": "Alerta", "aging_badge": "yellow", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 17, "marca": "CHEVROLET", "modelo": "ONIX", "version": "ONIX 1.0T PREMIER I", "trans": "MT", "combust": "NAFTA", "kms": 117500, "anio": 2020, "tipo": "SEDAN 5 PUERTAS", "dominio": "AE872AC", "color": "BLANCO", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 74, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 18, "marca": "CHEVROLET", "modelo": "CRUZE", "version": "CRUZE 1.8 LT", "trans": "MT", "combust": "NAFTA", "kms": 156000, "anio": 2015, "tipo": "SEDAN 4 PUERTAS", "dominio": "PHR737", "color": "blanco", "ubicacion": "Sin asignar / Salón no especificado", "is_taller": false, "dias": 8, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 19, "marca": "CHRYSLER", "modelo": "RAM", "version": "RAM 1500 3.0 D/CAB 4X4 LARAMIE NIGH", "trans": "AT", "combust": "NAFTA", "kms": 16500, "anio": 2025, "tipo": "PICKUP", "dominio": "AH396GW", "color": "NEGRA", "ubicacion": "MADERO ALEM 828", "is_taller": false, "dias": 118, "aging_cat": "91-180 días", "aging_status": "Alerta", "aging_badge": "yellow", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 20, "marca": "CHRYSLER", "modelo": "RAM", "version": "RAM 1500 5.7 D/CAB 4X4 LARAMIE", "trans": "AT", "combust": "NAFTA", "kms": 97000, "anio": 2014, "tipo": "PICKUP", "dominio": "OAL881", "color": "NEGRO", "ubicacion": "LUCAS MECANICO", "is_taller": true, "dias": 568, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 21, "marca": "CHRYSLER", "modelo": "RAM", "version": "RAM 1500 5.7 D/CAB 4X4 LARAMIE", "trans": "MT", "combust": "NAFTA", "kms": 90000, "anio": 2020, "tipo": "PICKUP", "dominio": "AE088SY", "color": "GRIS", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 67, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 6}, {"id": 22, "marca": "CHRYSLER", "modelo": "JEEP COMPASS", "version": "JEEP COMPASS 1.3T 270 SERIE-S AT6", "trans": "AT", "combust": "NAFTA", "kms": 15400, "anio": 2025, "tipo": "RURAL 5 PUERTAS", "dominio": "AH395SB", "color": "NEGRO", "ubicacion": "MADERO ALEM 828", "is_taller": false, "dias": 76, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 23, "marca": "CHRYSLER", "modelo": "JEEP WRANGLER", "version": "JEEP WRANGLER 2.0 UNLIMITED RUBICON AT8", "trans": "AT", "combust": "NAFTA", "kms": 1600, "anio": 2025, "tipo": "TODO TERRENO", "dominio": "AH452ZS", "color": "NEGRO", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 60, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 24, "marca": "CHRYSLER", "modelo": "JEEP RENEGADE", "version": "JEEP RENEGADE 1.8 4X2 SPORT AT", "trans": "AT", "combust": "NAFTA", "kms": 92400, "anio": 2018, "tipo": "RURAL", "dominio": "AC717CP", "color": "AZUL", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 342, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 25, "marca": "CHRYSLER", "modelo": "JEEP COMPASS", "version": "JEEP COMPASS 1.3T 270 SPORT AT6", "trans": "AT", "combust": "NAFTA", "kms": 42950, "anio": 2024, "tipo": "SUV", "dominio": "AG429DM", "color": "GRIS", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 25, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 26, "marca": "CITROEN", "modelo": "C3 PICASSO", "version": "C 3 PICASSO  1.5I ORIGINE", "trans": "MT", "combust": "NAFTA", "kms": 102000, "anio": 2013, "tipo": "SEDAN 5 PUERTAS", "dominio": "MBJ491", "color": "BLANCA", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 51, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 27, "marca": "FIAT", "modelo": "SIENA", "version": "SIENA 1.4 EL", "trans": "MT", "combust": "NAFTA", "kms": 160000, "anio": 2016, "tipo": "SEDAN 4 PUERTAS", "dominio": "AA630XP", "color": "VERDE", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 182, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 28, "marca": "FIAT", "modelo": "UNO", "version": "UNO WAY 1.4 8V", "trans": "MT", "combust": "NAFTA", "kms": 120300, "anio": 2012, "tipo": "SEDAN 5 PUERTAS", "dominio": "KUG893", "color": "BLANCO", "ubicacion": "MAURO ( MIRA TU AUTO)", "is_taller": false, "dias": 568, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 29, "marca": "FIAT", "modelo": "UNO", "version": "UNO 1.4 5 PTAS WAY", "trans": "MT", "combust": "NAFTA", "kms": 157286, "anio": 2011, "tipo": "SEDAN 5 PUERTAS", "dominio": "JUA617", "color": "ROJO", "ubicacion": "MAURO ( MIRA TU AUTO)", "is_taller": false, "dias": 567, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 30, "marca": "FIAT", "modelo": "UNO", "version": "UNO 1.4 5 PTAS SPORTING", "trans": "MT", "combust": "NAFTA", "kms": 187655, "anio": 2012, "tipo": "SEDAN 5 PUERTAS", "dominio": "LBX970", "color": "BLANCO", "ubicacion": "MOVIMIENTO", "is_taller": true, "dias": 567, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 31, "marca": "FIAT", "modelo": "TORO", "version": "TORO 2.0TDI VOLCANO 4X4 AT", "trans": "AT", "combust": "DIESEL", "kms": 140740, "anio": 2017, "tipo": "PICKUP", "dominio": "AB820NX", "color": "BLANCA", "ubicacion": "Sin asignar / Salón no especificado", "is_taller": false, "dias": 185, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 32, "marca": "FIAT", "modelo": "TORO", "version": "TORO 2.0TDI RANCH 4X4 AT", "trans": "AT", "combust": "DIESEL", "kms": 127800, "anio": 2020, "tipo": "PICKUP", "dominio": "AE172NY", "color": "ROJO", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 25, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 33, "marca": "FIAT", "modelo": "TORO", "version": "TORO 2.0 4X4 FREEDOM MT", "trans": "MT", "combust": "DIESEL", "kms": 118785, "anio": 2017, "tipo": "PICKUP", "dominio": "AC122NW", "color": "GRIS PLATA", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 363, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 6}, {"id": 34, "marca": "FIAT", "modelo": "TORO", "version": "TORO 2.0 4X4 FREEDOM MT", "trans": "MT", "combust": "DIESEL", "kms": 124577, "anio": 2018, "tipo": "PICKUP", "dominio": "AD597ZK", "color": "BLANCO", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 8, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 35, "marca": "FIAT", "modelo": "TORO", "version": "TORO 2.0 4X4 FREEDOM MT", "trans": "MT", "combust": "DIESEL", "kms": 100000, "anio": 2017, "tipo": "PICKUP", "dominio": "AA740KP", "color": "BLANCO", "ubicacion": "MADERO ALEM 828", "is_taller": false, "dias": 69, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 36, "marca": "FIAT", "modelo": "TITANO", "version": "TITANO 2.2 TD 4X4 RANCH AT8", "trans": "AT", "combust": "DIESEL", "kms": 0, "anio": 2026, "tipo": "PICKUP", "dominio": "0KM", "color": "BLANCO", "ubicacion": "MADERO ALEM 828", "is_taller": false, "dias": 210, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 37, "marca": "FIAT", "modelo": "STRADA", "version": "STRADA 1.6 ADVENTURE", "trans": "MT", "combust": "NAFTA", "kms": 156000, "anio": 2012, "tipo": "PICKUP", "dominio": "LHH684", "color": "BLANCA", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 47, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 38, "marca": "FIAT", "modelo": "PALIO", "version": "PALIO 1.6 ESSENCE DUALOGIC", "trans": "MT", "combust": "NAFTA", "kms": 116000, "anio": 2014, "tipo": "SEDAN 5 PUERTAS", "dominio": "NSZ178", "color": "BLANCO", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 468, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 39, "marca": "FIAT", "modelo": "SIENA", "version": "SIENA 1.4 EL", "trans": "MT", "combust": "NAFTA", "kms": 160000, "anio": 2012, "tipo": "AUTOS Y CAMIONETAS", "dominio": "LVU931", "color": "Gris", "ubicacion": "Lago Puelo (Carlos)", "is_taller": false, "dias": 196, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 40, "marca": "FIAT", "modelo": "CRONOS", "version": "CRONOS DRIVE 1.3 GSE BZ", "trans": "MT", "combust": "NAFTA", "kms": 80000, "anio": 2022, "tipo": "SEDAN 4 PUERTAS", "dominio": "AF623WR", "color": "Negro", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 150, "aging_cat": "91-180 días", "aging_status": "Alerta", "aging_badge": "yellow", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 4}, {"id": 41, "marca": "FIAT", "modelo": "CRONOS", "version": "CRONOS 1.3 DRIVE", "trans": "MT", "combust": "NAFTA", "kms": 0, "anio": 2026, "tipo": "SEDAN 4 PUERTAS", "dominio": "OKM", "color": "BLANCO ALASKA", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 148, "aging_cat": "91-180 días", "aging_status": "Alerta", "aging_badge": "yellow", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 42, "marca": "FIAT", "modelo": "PUNTO", "version": "PUNTO ESSENCE 1.6", "trans": "MT", "combust": "NAFTA", "kms": 200000, "anio": 2012, "tipo": "SEDAN 5 PUERTAS", "dominio": "KUK019", "color": "NEGRO", "ubicacion": "MAURO ( MIRA TU AUTO)", "is_taller": false, "dias": 373, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 43, "marca": "FIAT", "modelo": "CRONOS", "version": "CRONOS 1.3 DRIVE CVT", "trans": "AT", "combust": "NAFTA", "kms": 0, "anio": 2026, "tipo": "SEDAN 4 PUERTAS", "dominio": "OKM", "color": "GRIS PLATA", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 148, "aging_cat": "91-180 días", "aging_status": "Alerta", "aging_badge": "yellow", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 44, "marca": "FIAT", "modelo": "CRONOS", "version": "CRONOS 1.8 PRECISION", "trans": "MT", "combust": "NAFTA", "kms": 89000, "anio": 2021, "tipo": "SEDAN 4 PUERTAS", "dominio": "AE799OS", "color": "Rojo", "ubicacion": "DANI MECANICO (ALEM)", "is_taller": true, "dias": 23, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 45, "marca": "FIAT", "modelo": "CRONOS", "version": "CRONOS 1.3 DRIVE GSE", "trans": "MT", "combust": "NAFTA", "kms": 62000, "anio": 2022, "tipo": "SEDAN 4 PUERTAS", "dominio": "AF387UV", "color": "Blanco", "ubicacion": "Sin asignar / Salón no especificado", "is_taller": false, "dias": 1, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 46, "marca": "FIAT", "modelo": "PALIO", "version": "PALIO 1.4 5 P ATTRACTIVE", "trans": "MT", "combust": "NAFTA", "kms": 120000, "anio": 2014, "tipo": "SEDAN 5 PUERTAS", "dominio": "NUJ334", "color": "VERDE", "ubicacion": "MAURO ( MIRA TU AUTO)", "is_taller": false, "dias": 408, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 47, "marca": "FIAT", "modelo": "PALIO", "version": "PALIO 1.4 5 P FIRE", "trans": "MT", "combust": "NAFTA", "kms": 115000, "anio": 2015, "tipo": "SEDAN 5 PUERTAS", "dominio": "PBE066", "color": "ROJO", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 112, "aging_cat": "91-180 días", "aging_status": "Alerta", "aging_badge": "yellow", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 4}, {"id": 48, "marca": "FIAT", "modelo": "PALIO", "version": "PALIO WE ADVENTURE 1.6 LOCKER", "trans": "MT", "combust": "NAFTA", "kms": 145000, "anio": 2011, "tipo": "SEDAN 4 PUERTAS", "dominio": "KKV173", "color": "BLANCO", "ubicacion": "MAURO ( MIRA TU AUTO)", "is_taller": false, "dias": 568, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 49, "marca": "FIAT", "modelo": "PUNTO", "version": "PUNTO 1.4 ATTRACTIVE", "trans": "MT", "combust": "NAFTA", "kms": 99678, "anio": 2016, "tipo": "SEDAN 5 PUERTAS", "dominio": "PNR202", "color": "ROJO", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 568, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 50, "marca": "FORD", "modelo": "RANGER", "version": "RANGER 3.2 TDI DC 4X2 XLS AT", "trans": "AT", "combust": "DIESEL", "kms": 220000, "anio": 2015, "tipo": "PICKUP", "dominio": "OYT032", "color": "Azul", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 133, "aging_cat": "91-180 días", "aging_status": "Alerta", "aging_badge": "yellow", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 51, "marca": "FORD", "modelo": "RANGER", "version": "RANGER 2.2 TDI DC 4X4 XL", "trans": "MT", "combust": "DIESEL", "kms": 112100, "anio": 2023, "tipo": "PICKUP", "dominio": "AG082JF", "color": "BLANCO", "ubicacion": "MADERO ALEM 828", "is_taller": false, "dias": 181, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 52, "marca": "FORD", "modelo": "RANGER", "version": "RANGER 2.2 TDI DC 4X4 XL", "trans": "MT", "combust": "DIESEL", "kms": 122000, "anio": 2018, "tipo": "PICKUP", "dominio": "AC688PK", "color": "BLANCO", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 176, "aging_cat": "91-180 días", "aging_status": "Alerta", "aging_badge": "yellow", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 53, "marca": "FORD", "modelo": "RANGER", "version": "RANGER 2.2 TDI DC 4X4 XL SAF.", "trans": "MT", "combust": "NAFTA", "kms": 170000, "anio": 2013, "tipo": "PICKUP", "dominio": "NDA773", "color": "BLANCA", "ubicacion": "Lago Puelo (Carlos)", "is_taller": false, "dias": 568, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 54, "marca": "FORD", "modelo": "RANGER", "version": "RANGER 3.2 4X2 XLT DC", "trans": "MT", "combust": "DIESEL", "kms": 190, "anio": 2013, "tipo": "PICKUP", "dominio": "MRU270", "color": "BEIGE", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 350, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 55, "marca": "FORD", "modelo": "RANGER", "version": "RANGER 3.2 4X4 DC LTD MT", "trans": "MT", "combust": "DIESEL", "kms": 160259, "anio": 2012, "tipo": "PICKUP", "dominio": "LSJ065", "color": "BLANCA", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 387, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 4}, {"id": 56, "marca": "FORD", "modelo": "RANGER", "version": "RANGER 3.2 DC 4X4 LTD AT", "trans": "AT", "combust": "DIESEL", "kms": 180000, "anio": 2012, "tipo": "PICKUP", "dominio": "LQG566", "color": "BLANCA", "ubicacion": "GALPON", "is_taller": true, "dias": 568, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 57, "marca": "FORD", "modelo": "RANGER", "version": "RANGER 3.2 TDI DC 4X2 XLS", "trans": "MT", "combust": "DIESEL", "kms": 180000, "anio": 2012, "tipo": "PICKUP", "dominio": "LPK788", "color": "AZUL", "ubicacion": "LUCAS MECANICO", "is_taller": true, "dias": 259, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 58, "marca": "FORD", "modelo": "RANGER", "version": "RANGER 3.2 TDI DC 4X4 XLS", "trans": "MT", "combust": "DIESEL", "kms": 205000, "anio": 2014, "tipo": "PICKUP", "dominio": "OHO763", "color": "GRIS PLATA", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 51, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 59, "marca": "FORD", "modelo": "RANGER", "version": "RANGER 3.2 TDI DC 4X2 XLT", "trans": "MT", "combust": "DIESEL", "kms": 166363, "anio": 2014, "tipo": "PICKUP", "dominio": "NNW539", "color": "AZUL", "ubicacion": "MADERO ALEM 828", "is_taller": false, "dias": 310, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 60, "marca": "FORD", "modelo": "RANGER", "version": "RANGER 3.2 TDI DC 4X4 LTD", "trans": "AT", "combust": "DIESEL", "kms": 153490, "anio": 2021, "tipo": "PICKUP", "dominio": "AE840MJ", "color": "GRIS OSCURO", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 275, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 4}, {"id": 61, "marca": "FORD", "modelo": "RANGER", "version": "RANGER 3.2 TDI DC 4X4 XLS", "trans": "MT", "combust": "DIESEL", "kms": 139548, "anio": 2021, "tipo": "PICKUP", "dominio": "AE882BX", "color": "BLANCA", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 567, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 62, "marca": "FORD", "modelo": "RANGER", "version": "RANGER 3.2 TDI DC 4X4 XLS", "trans": "MT", "combust": "DIESEL", "kms": 120000, "anio": 2013, "tipo": "PICKUP", "dominio": "MPK181", "color": "BLANCO", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 268, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 4}, {"id": 63, "marca": "FORD", "modelo": "RANGER", "version": "RANGER 3.2 TDI DC 4X4 XLT", "trans": "MT", "combust": "DIESEL", "kms": 156, "anio": 2013, "tipo": "PICKUP", "dominio": "MTN003", "color": "GRIS", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 279, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 64, "marca": "FORD", "modelo": "RANGER", "version": "RANGER 3.2 TDI DC 4X4 XLT", "trans": "MT", "combust": "DIESEL", "kms": 204000, "anio": 2015, "tipo": "PICKUP", "dominio": "PFG991", "color": "GRIS", "ubicacion": "GALPON", "is_taller": true, "dias": 12, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 65, "marca": "FORD", "modelo": "TERRITORY", "version": "TERRITORY 1.5 TREND 4X2 GTDI AT", "trans": "AT", "combust": "NAFTA", "kms": 0, "anio": 2023, "tipo": "SUV", "dominio": "AG155IV", "color": "AZUL METALICO", "ubicacion": "Sin asignar / Salón no especificado", "is_taller": false, "dias": 33, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 66, "marca": "FORD", "modelo": "RANGER", "version": "RANGER 2.0 DC 4X4 XLT BIT 10AT", "trans": "AT", "combust": "DIESEL", "kms": 91800, "anio": 2024, "tipo": "PICKUP", "dominio": "AG724UB", "color": "BLANCO", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 352, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 4}, {"id": 67, "marca": "FORD", "modelo": "RANGER", "version": "RANGER 2.2 TDI DC 4X2 XL SAF.", "trans": "MT", "combust": "DIESEL", "kms": 0, "anio": 2014, "tipo": "PICKUP", "dominio": "OCT341", "color": "GRIS", "ubicacion": "DANI MECANICO (ALEM)", "is_taller": true, "dias": 567, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 68, "marca": "FORD", "modelo": "RANGER", "version": "RANGER 3.2 TDI DC 4X4 XLS", "trans": "MT", "combust": "DIESEL", "kms": 187249, "anio": 2014, "tipo": "PICKUP", "dominio": "OFE067", "color": "BLANCO", "ubicacion": "MADERO ALEM 828", "is_taller": false, "dias": 77, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 69, "marca": "FORD", "modelo": "MAVERICK", "version": "MAVERICK LARIAT 2.0 4X4 AT", "trans": "AT", "combust": "NAFTA", "kms": 50000, "anio": 2023, "tipo": "PICKUP", "dominio": "AG319OE", "color": "GRIS", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 27, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 70, "marca": "FORD", "modelo": "MAVERICK", "version": "MAVERICK 2.0T 2WD XLT AT8", "trans": "AT", "combust": "NAFTA", "kms": 60000, "anio": 2022, "tipo": "PICKUP", "dominio": "AF408JZ", "color": "VERDE", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 13, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 71, "marca": "FORD", "modelo": "ECO SPORT", "version": "ECO SPORT 1.6 S", "trans": "MT", "combust": "NAFTA", "kms": 0, "anio": 2015, "tipo": "SUV", "dominio": "OUT473", "color": "BLANCO", "ubicacion": "Sin asignar / Salón no especificado", "is_taller": false, "dias": 1, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 72, "marca": "FORD", "modelo": "ECO SPORT", "version": "ECO SPORT 1.6 S MT", "trans": "MT", "combust": "NAFTA", "kms": 136, "anio": 2017, "tipo": "SEDAN 4 PUERTAS", "dominio": "AA911VA", "color": "ROJA", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 309, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 73, "marca": "FORD", "modelo": "ECO SPORT", "version": "ECO SPORT 1.6 SE", "trans": "MT", "combust": "NAFTA", "kms": 200000, "anio": 2013, "tipo": "RURAL", "dominio": "NIK866", "color": "BEIGE", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 178, "aging_cat": "91-180 días", "aging_status": "Alerta", "aging_badge": "yellow", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 6}, {"id": 74, "marca": "FORD", "modelo": "ECO SPORT", "version": "ECO SPORT 1.6 SE", "trans": "MT", "combust": "NAFTA", "kms": 160000, "anio": 2014, "tipo": "RURAL", "dominio": "NXY174", "color": "NEGRO", "ubicacion": "MAURO ( MIRA TU AUTO)", "is_taller": false, "dias": 42, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 75, "marca": "FORD", "modelo": "ECO SPORT", "version": "ECOSPORT SE 1.6L MT", "trans": "MT", "combust": "NAFTA", "kms": 97000, "anio": 2014, "tipo": "RURAL", "dominio": "NZX904", "color": "Gris", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 462, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 76, "marca": "FORD", "modelo": "FIESTA", "version": "FIESTA  1.6 4P TITANIUM       (KD)", "trans": "MT", "combust": "NAFTA", "kms": 105000, "anio": 2015, "tipo": "SEDAN 4 PUERTAS", "dominio": "PDZ016", "color": "BLANCO", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 231, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 77, "marca": "FORD", "modelo": "FIESTA", "version": "FIESTA  1.6 4P TITANIUM       (KD)", "trans": "MT", "combust": "NAFTA", "kms": 0, "anio": 2014, "tipo": "SEDAN 4 PUERTAS", "dominio": "OJG945", "color": "GRIS", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 21, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 78, "marca": "FORD", "modelo": "FIESTA", "version": "FIESTA  1.6 5P S  PLUS (KD)", "trans": "MT", "combust": "NAFTA", "kms": 113566, "anio": 2016, "tipo": "SEDAN 5 PUERTAS", "dominio": "AA393JW", "color": "CELESTE", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 454, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 79, "marca": "FORD", "modelo": "FIESTA", "version": "FIESTA KINETIC DESING H. TREND", "trans": "MT", "combust": "NAFTA", "kms": 162312, "anio": 2012, "tipo": "SEDAN 5 PUERTAS", "dominio": "KUJ958", "color": "GRIS", "ubicacion": "GALPON", "is_taller": true, "dias": 568, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 80, "marca": "FORD", "modelo": "FIESTA", "version": "FIESTA  1.6 5P TITANIUM   (KD)", "trans": "MT", "combust": "NAFTA", "kms": 108, "anio": 2017, "tipo": "SEDAN 5 PUERTAS", "dominio": "AC049BQ", "color": "BLANCO", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 231, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 4}, {"id": 81, "marca": "FORD", "modelo": "FOCUS", "version": "FOCUS 1.6 4 P S", "trans": "MT", "combust": "NAFTA", "kms": 0, "anio": 2014, "tipo": "SEDAN 4 PUERTAS", "dominio": "NXL964", "color": "GRIS", "ubicacion": "Sin asignar / Salón no especificado", "is_taller": false, "dias": 36, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 82, "marca": "FORD", "modelo": "FOCUS", "version": "FOCUS 1.6 5 P TREND", "trans": "MT", "combust": "NAFTA", "kms": 220000, "anio": 2013, "tipo": "SEDAN 5 PUERTAS", "dominio": "MWR081", "color": "GRIS PLATA", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 83, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 83, "marca": "FORD", "modelo": "FOCUS", "version": "FOCUS 2.0 5 P SE", "trans": "MT", "combust": "NAFTA", "kms": 135694, "anio": 2017, "tipo": "SEDAN 5 PUERTAS", "dominio": "AA740EU", "color": "GRIS PLATA", "ubicacion": "LUCAS MECANICO", "is_taller": true, "dias": 295, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": true, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 84, "marca": "FORD", "modelo": "FOCUS", "version": "FOCUS 2.0 5 P TREND", "trans": "MT", "combust": "NAFTA", "kms": 249803, "anio": 2009, "tipo": "SEDAN 5 PUERTAS", "dominio": "IAQ106", "color": "NEGRO", "ubicacion": "MAURO ( MIRA TU AUTO)", "is_taller": false, "dias": 568, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 85, "marca": "FORD", "modelo": "KA", "version": "KA 1.5 SE", "trans": "MT", "combust": "NAFTA", "kms": 123000, "anio": 2018, "tipo": "SEDAN 4 PUERTAS", "dominio": "AC728BQ", "color": "BLANCO", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 71, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 86, "marca": "FORD", "modelo": "KUGA", "version": "KUGA 1.6 T 4X4 SEL AT", "trans": "AT", "combust": "NAFTA", "kms": 137000, "anio": 2013, "tipo": "RURAL", "dominio": "NIT617", "color": "BLANCO", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 155, "aging_cat": "91-180 días", "aging_status": "Alerta", "aging_badge": "yellow", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 4}, {"id": 87, "marca": "FORD", "modelo": "KUGA", "version": "KUGA 2.0 SEL      4X4 AUT", "trans": "AT", "combust": "NAFTA", "kms": 156810, "anio": 2017, "tipo": "SUV", "dominio": "AB359LV", "color": "Blanco", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 300, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": true, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 88, "marca": "FORD", "modelo": "MAVERICK", "version": "MAVERICK 2.0T 2WD XLT AT8", "trans": "AT", "combust": "NAFTA", "kms": 0, "anio": 2026, "tipo": "PICKUP", "dominio": "0KM", "color": "CONSULTAR COLOR", "ubicacion": "0KM PARA OFRECER !! MIRAR DESCRIPCION", "is_taller": false, "dias": 39, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 89, "marca": "FOTON CAMION", "modelo": "AUMARK", "version": "AUMARK  1.5 TM 1 DC", "trans": "MT", "combust": "NAFTA", "kms": 8000, "anio": 2023, "tipo": "CAMION", "dominio": "AH528KM", "color": "BLANCO", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 25, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 90, "marca": "HUSQVARNA", "modelo": "CALLE", "version": "SVARTPILEN 401", "trans": "MT", "combust": "NAFTA", "kms": 1000, "anio": 2023, "tipo": "MOTOCICLETA", "dominio": "A160JHG", "color": "negra", "ubicacion": "MADERO ALEM 828", "is_taller": false, "dias": 325, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 3}, {"id": 91, "marca": "HUSQVARNA", "modelo": "CALLE", "version": "SVARTPILEN 401", "trans": "MT", "combust": "NAFTA", "kms": 1000, "anio": 2023, "tipo": "MOTOCICLETA", "dominio": "A181NSY", "color": "NEGRA", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 157, "aging_cat": "91-180 días", "aging_status": "Alerta", "aging_badge": "yellow", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 92, "marca": "HYUNDAI", "modelo": "TUCSON", "version": "TUCSON 2.7 4X4 V6 AUT", "trans": "AT", "combust": "NAFTA", "kms": 230971, "anio": 2010, "tipo": "TODO TERRENO", "dominio": "ITX821", "color": "GRIS", "ubicacion": "Lago Puelo (Carlos)", "is_taller": false, "dias": 568, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 93, "marca": "NISSAN", "modelo": "FRONTIER", "version": "PICK-UP FRONTIER 2.3 DC 4X4 S", "trans": "MT", "combust": "DIESEL", "kms": 0, "anio": 2022, "tipo": "PICKUP", "dominio": "AF351CM", "color": "BLANCO", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 25, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 94, "marca": "NISSAN", "modelo": "VERSA", "version": "VERSA 1.6 ADVANCE", "trans": "MT", "combust": "NAFTA", "kms": 92800, "anio": 2020, "tipo": "SEDAN 4 PUERTAS", "dominio": "AE286YV", "color": "GRIS OSCURO", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 139, "aging_cat": "91-180 días", "aging_status": "Alerta", "aging_badge": "yellow", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 95, "marca": "PEUGEOT", "modelo": "308", "version": "308 1.6 ACTIVE", "trans": "MT", "combust": "NAFTA", "kms": 135862, "anio": 2013, "tipo": "SEDAN 5 PUERTAS", "dominio": "MMC639", "color": "BLANCO", "ubicacion": "MOVIMIENTO", "is_taller": true, "dias": 568, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 96, "marca": "PEUGEOT", "modelo": "408", "version": "408 2.0 ALLURE  NAV", "trans": "MT", "combust": "NAFTA", "kms": 124000, "anio": 2013, "tipo": "SEDAN 4 PUERTAS", "dominio": "MCC397", "color": "GRIS PLATA", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 51, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 97, "marca": "PEUGEOT", "modelo": "308", "version": "308 2.0 FELINE BVA", "trans": "AT", "combust": "NAFTA", "kms": 145672, "anio": 2012, "tipo": "SEDAN 5 PUERTAS", "dominio": "LNA933", "color": "VERDE OSCURO", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 483, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 98, "marca": "PEUGEOT", "modelo": "308", "version": "308 1.6 ALLURE", "trans": "MT", "combust": "NAFTA", "kms": 107900, "anio": 2014, "tipo": "SEDAN 5 PUERTAS", "dominio": "NUR269", "color": "GRIS", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 568, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 99, "marca": "PEUGEOT", "modelo": "408", "version": "408 1.6 THP FELINE TIPTRONIC", "trans": "AT", "combust": "NAFTA", "kms": 171000, "anio": 2012, "tipo": "SEDAN 4 PUERTAS", "dominio": "LWZ659", "color": "VERDE OSCURO", "ubicacion": "MAURO ( MIRA TU AUTO)", "is_taller": false, "dias": 483, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 100, "marca": "PEUGEOT", "modelo": "307", "version": "307 1.6 5 P. XS", "trans": "MT", "combust": "NAFTA", "kms": 190000, "anio": 2010, "tipo": "SEDAN 5 PUERTAS", "dominio": "JCE502", "color": "GRIS PLATA", "ubicacion": "MAURO ( MIRA TU AUTO)", "is_taller": false, "dias": 483, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 101, "marca": "PEUGEOT", "modelo": "208", "version": "208 1.6 ACTIVE PACK", "trans": "MT", "combust": "NAFTA", "kms": 63045, "anio": 2024, "tipo": "SEDAN 5 PUERTAS", "dominio": "AG419FQ", "color": "AZUL", "ubicacion": "MADERO ALEM 828", "is_taller": false, "dias": 8, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 102, "marca": "PEUGEOT", "modelo": "208", "version": "208 1.6 5P FELINE PK CUIR", "trans": "MT", "combust": "NAFTA", "kms": 98500, "anio": 2015, "tipo": "SEDAN 5 PUERTAS", "dominio": "PIL649", "color": "BLANCA", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 503, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 103, "marca": "PEUGEOT", "modelo": "208", "version": "208 1.6 5P ALLURE", "trans": "MT", "combust": "NAFTA", "kms": 65000, "anio": 2019, "tipo": "SEDAN 5 PUERTAS", "dominio": "AD370WW", "color": "GRIS OSCURO", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 106, "aging_cat": "91-180 días", "aging_status": "Alerta", "aging_badge": "yellow", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 104, "marca": "PEUGEOT", "modelo": "208", "version": "208 1.5 ALLURE TOUCHSCREEN", "trans": "MT", "combust": "NAFTA", "kms": 142000, "anio": 2016, "tipo": "RURAL 5 PUERTAS", "dominio": "AA740ML", "color": "GRIS", "ubicacion": "GERMAN CHAPISTA", "is_taller": true, "dias": 15, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 105, "marca": "PEUGEOT", "modelo": "208", "version": "208 1.5 5P ACTIVE", "trans": "MT", "combust": "NAFTA", "kms": 99754, "anio": 2017, "tipo": "SEDAN 5 PUERTAS", "dominio": "AB580AS", "color": "BLANCO", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 148, "aging_cat": "91-180 días", "aging_status": "Alerta", "aging_badge": "yellow", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 106, "marca": "POLARIS", "modelo": "RANGER SP", "version": "POLARIS RANGER 570 SP", "trans": "AT", "combust": "NAFTA", "kms": 0, "anio": 2025, "tipo": "UTV", "dominio": "0KM", "color": "VERDE MILITAR", "ubicacion": "Lago Puelo (Carlos)", "is_taller": false, "dias": 387, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 1}, {"id": 107, "marca": "RENAULT", "modelo": "SANDERO", "version": "SANDERO STEPWAY 1.6 SL", "trans": "MT", "combust": "NAFTA", "kms": 201462, "anio": 2010, "tipo": "SEDAN 5 PUERTAS", "dominio": "JFZ306", "color": "GRIS", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 568, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 108, "marca": "RENAULT", "modelo": "SANDERO", "version": "SANDERO STEPWAY 1.6 RIP CURL", "trans": "MT", "combust": "NAFTA", "kms": 206800, "anio": 2016, "tipo": "SEDAN 5 PUERTAS", "dominio": "PLN615", "color": "BLANCO", "ubicacion": "GALPON", "is_taller": true, "dias": 33, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 109, "marca": "RENAULT", "modelo": "SANDERO", "version": "SANDERO STEPWAY 1.6 PRIVILEGE", "trans": "MT", "combust": "NAFTA", "kms": 91000, "anio": 2016, "tipo": "SEDAN 5 PUERTAS", "dominio": "POH378", "color": "GRIS", "ubicacion": "GALPON", "is_taller": true, "dias": 27, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 110, "marca": "RENAULT", "modelo": "SANDERO", "version": "SANDERO STEPWAY 1.6 PRIVILEGE", "trans": "MT", "combust": "NAFTA", "kms": 163100, "anio": 2013, "tipo": "SUV", "dominio": "NCL922", "color": "BLANCO", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 96, "aging_cat": "91-180 días", "aging_status": "Alerta", "aging_badge": "yellow", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 111, "marca": "RENAULT", "modelo": "SANDERO", "version": "SANDERO STEPWAY 1.6 DYNAMIQUE", "trans": "MT", "combust": "NAFTA", "kms": 0, "anio": 2016, "tipo": "SEDAN 5 PUERTAS", "dominio": "AA096CM", "color": "CONSULTAR COLOR", "ubicacion": "LUCAS MECANICO", "is_taller": true, "dias": 226, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 112, "marca": "RENAULT", "modelo": "SANDERO", "version": "NUEVO SANDERO EXPRESSION", "trans": "MT", "combust": "NAFTA", "kms": 128900, "anio": 2015, "tipo": "SEDAN 5 PUERTAS", "dominio": "OWM805", "color": "BLANCO", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 92, "aging_cat": "91-180 días", "aging_status": "Alerta", "aging_badge": "yellow", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 113, "marca": "RENAULT", "modelo": "LOGAN", "version": "LOGAN PRIVILEGE 1.6", "trans": "MT", "combust": "NAFTA", "kms": 108000, "anio": 2017, "tipo": "SEDAN 4 PUERTAS", "dominio": "AC100EJ", "color": "GRIS OSCURO", "ubicacion": "MOHE SERVICE SRL", "is_taller": true, "dias": 419, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 114, "marca": "RENAULT", "modelo": "KOLEOS", "version": "KOLEOS 2.5 4X4 PRIVILEGE", "trans": "MT", "combust": "NAFTA", "kms": 217110, "anio": 2011, "tipo": "SUV", "dominio": "KJW732", "color": "GRIS", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 568, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 115, "marca": "RENAULT", "modelo": "KANGOO", "version": "KANGOO II 1.6 EXPRESS CONFOTR SCE", "trans": "MT", "combust": "NAFTA", "kms": 124618, "anio": 2021, "tipo": "FURGON", "dominio": "AE923GS", "color": "BLANCO", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 82, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 116, "marca": "RENAULT", "modelo": "FLUENCE", "version": "FLUENCE 2.0  PRIVILEGE", "trans": "MT", "combust": "NAFTA", "kms": 297, "anio": 2011, "tipo": "SEDAN 4 PUERTAS", "dominio": "KRK556", "color": "BEIGE", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 337, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 117, "marca": "RENAULT", "modelo": "FLUENCE", "version": "FLUENCE 2.0  PRIVILEGE", "trans": "MT", "combust": "NAFTA", "kms": 0, "anio": 2011, "tipo": "SEDAN 4 PUERTAS", "dominio": "KCO526", "color": "BEIGE", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 231, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 118, "marca": "RENAULT", "modelo": "DUSTER", "version": "DUSTER 2.0 4X4 PRIVILEGE", "trans": "MT", "combust": "NAFTA", "kms": 0, "anio": 2012, "tipo": "TODO TERRENO", "dominio": "KYB269", "color": "GRIS", "ubicacion": "LUCAS MECANICO", "is_taller": true, "dias": 262, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 119, "marca": "RENAULT", "modelo": "DUSTER", "version": "DUSTER 2.0 4X4 LUXE NAV", "trans": "MT", "combust": "NAFTA", "kms": 110000, "anio": 2014, "tipo": "TODO TERRENO", "dominio": "NTI039", "color": "GRIS", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 190, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 4}, {"id": 120, "marca": "RENAULT", "modelo": "DUSTER", "version": "DUSTER 2.0 4X4 LUXE NAV", "trans": "MT", "combust": "NAFTA", "kms": 193244, "anio": 2013, "tipo": "SUV", "dominio": "NEK550", "color": "BLANCO", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 568, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 121, "marca": "RENAULT", "modelo": "DUSTER", "version": "DUSTER 1.6 4X2 DYNAMIQUE", "trans": "MT", "combust": "NAFTA", "kms": 215130, "anio": 2012, "tipo": "SUV", "dominio": "LMA296", "color": "BLANCO", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 556, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 122, "marca": "RENAULT", "modelo": "DUSTER", "version": "DUSTER 1.6 4X2 CONFORT", "trans": "MT", "combust": "NAFTA", "kms": 194, "anio": 2014, "tipo": "SUV", "dominio": "NOF729", "color": "gris", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 290, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 123, "marca": "RENAULT", "modelo": "CLIO", "version": "CLIO MIO 5P CONFORT PLUS ABS", "trans": "MT", "combust": "NAFTA", "kms": 136000, "anio": 2014, "tipo": "SEDAN 5 PUERTAS", "dominio": "NQG014", "color": "BEIGE", "ubicacion": "MOVIMIENTO", "is_taller": true, "dias": 208, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 124, "marca": "RENAULT", "modelo": "CLIO", "version": "CLIO MIO 1.2 5 P CONFORT", "trans": "MT", "combust": "NAFTA", "kms": 207325, "anio": 2014, "tipo": "SEDAN 5 PUERTAS", "dominio": "NXE665", "color": "BEIGE", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 548, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 125, "marca": "RENAULT", "modelo": "CAPTUR", "version": "CAPTUR 2.0 INTENS", "trans": "MT", "combust": "NAFTA", "kms": 178000, "anio": 2019, "tipo": "RURAL 5 PUERTAS", "dominio": "AD696FR", "color": "BLANCO", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 105, "aging_cat": "91-180 días", "aging_status": "Alerta", "aging_badge": "yellow", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 126, "marca": "RENAULT", "modelo": "CAPTUR", "version": "CAPTUR 2.0 INTENS", "trans": "MT", "combust": "NAFTA", "kms": 128000, "anio": 2018, "tipo": "SUV", "dominio": "AD110MO", "color": "BEIGE", "ubicacion": "MADERO ALEM 828", "is_taller": false, "dias": 71, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 127, "marca": "RENAULT", "modelo": "FLUENCE", "version": "FLUENCE 2.0  LUXE", "trans": "MT", "combust": "NAFTA", "kms": 150, "anio": 2015, "tipo": "SEDAN 4 PUERTAS", "dominio": "PAD451", "color": "GRIS", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 314, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 128, "marca": "TOYOTA", "modelo": "HILUX", "version": "HILUX 2.8 DC 4X4 SRX TDI AT", "trans": "AT", "combust": "DIESEL", "kms": 0, "anio": 2026, "tipo": "PICKUP", "dominio": "", "color": "ROJO METALIZADO", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 78, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 129, "marca": "TOYOTA", "modelo": "SW4", "version": "HILUX SW4 TDI SRX AUT", "trans": "AT", "combust": "DIESEL", "kms": 88230, "anio": 2018, "tipo": "TODO TERRENO", "dominio": "AC570QV", "color": "GRIS OSCURO", "ubicacion": "Sin asignar / Salón no especificado", "is_taller": false, "dias": 0, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 130, "marca": "TOYOTA", "modelo": "SW4", "version": "HILUX SW4 2.8 TDI GR-S AUT", "trans": "AT", "combust": "DIESEL", "kms": 62000, "anio": 2022, "tipo": "TODO TERRENO", "dominio": "AF238KR", "color": "BLANCO", "ubicacion": "MADERO ALEM 828", "is_taller": false, "dias": 25, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 131, "marca": "TOYOTA", "modelo": "HILUX", "version": "HILUX 2.8 DC 4X4 TDI SRV", "trans": "MT", "combust": "DIESEL", "kms": 128000, "anio": 2018, "tipo": "PICKUP", "dominio": "AD292IB", "color": "BLANCO", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 27, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": true, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 132, "marca": "TOYOTA", "modelo": "HILUX", "version": "HILUX 2.8 DC 4X4 TDI SR MT", "trans": "MT", "combust": "DIESEL", "kms": 89000, "anio": 2021, "tipo": "PICKUP", "dominio": "AF342MY", "color": "BLANCO", "ubicacion": "MADERO ALEM 828", "is_taller": false, "dias": 32, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 133, "marca": "TOYOTA", "modelo": "HILUX", "version": "HILUX  2.8 DC 4X4 TDI GR-S IV AT", "trans": "AT", "combust": "DIESEL", "kms": 0, "anio": 2026, "tipo": "PICKUP", "dominio": "OKM", "color": "BORDO", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 138, "aging_cat": "91-180 días", "aging_status": "Alerta", "aging_badge": "yellow", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 134, "marca": "TOYOTA", "modelo": "ETIOS", "version": "ETIOS 1.5 5 PTAS X  6MT", "trans": "MT", "combust": "NAFTA", "kms": 108001, "anio": 2022, "tipo": "SEDAN 5 PUERTAS", "dominio": "AF660QX", "color": "NEGRO", "ubicacion": "B&M CHAPA Y PINTURA", "is_taller": true, "dias": 8, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 135, "marca": "TOYOTA", "modelo": "ETIOS", "version": "ETIOS 1.5 5 PTAS X", "trans": "MT", "combust": "NAFTA", "kms": 70000, "anio": 2018, "tipo": "SEDAN 5 PUERTAS", "dominio": "AD237YN", "color": "GRIS PLATA", "ubicacion": "Sin asignar / Salón no especificado", "is_taller": false, "dias": 74, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 136, "marca": "TOYOTA", "modelo": "ETIOS", "version": "ETIOS 1.5 4 PTAS XLS 4AT", "trans": "AT", "combust": "NAFTA", "kms": 59800, "anio": 2023, "tipo": "SEDAN 4 PUERTAS", "dominio": "AF764TZ", "color": "BORDO", "ubicacion": "Sin asignar / Salón no especificado", "is_taller": false, "dias": 1, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 137, "marca": "TOYOTA", "modelo": "COROLLA CROSS", "version": "COROLLA CROSS SAFETY 2.0 GR-SPORT CVT", "trans": "AT", "combust": "NAFTA", "kms": 74740, "anio": 2022, "tipo": "SUV", "dominio": "AF715HI", "color": "BORDO", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 74, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 138, "marca": "TOYOTA", "modelo": "COROLLA", "version": "COROLLA 1.8 XLI", "trans": "MT", "combust": "NAFTA", "kms": 220000, "anio": 2012, "tipo": "SEDAN 4 PUERTAS", "dominio": "KYY617", "color": "GRIS", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 27, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 139, "marca": "TOYOTA", "modelo": "COROLLA", "version": "COROLLA 1.8 XLI", "trans": "MT", "combust": "NAFTA", "kms": 240000, "anio": 2008, "tipo": "SEDAN 4 PUERTAS", "dominio": "HBW299", "color": "BLANCO", "ubicacion": "MOVIMIENTO", "is_taller": true, "dias": 483, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 140, "marca": "TOYOTA", "modelo": "COROLLA", "version": "COROLLA 1.8 SE-G CVT", "trans": "AT", "combust": "NAFTA", "kms": 230000, "anio": 2012, "tipo": "SEDAN 4 PUERTAS", "dominio": "LTB519", "color": "GRIS PLATA", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 238, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 4}, {"id": 141, "marca": "VOLKSWAGEN", "modelo": "GOL", "version": "GOL 1.6 5 P TREND", "trans": "MT", "combust": "NAFTA", "kms": 158000, "anio": 2010, "tipo": "SEDAN 5 PUERTAS", "dominio": "ISP605", "color": "NEGRO", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 568, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 142, "marca": "VOLKSWAGEN", "modelo": "AMAROK", "version": "AMAROK V6 30TD 4X4 DC AT EXTREME", "trans": "AT", "combust": "NAFTA", "kms": 15000, "anio": 2025, "tipo": "PICKUP", "dominio": "AH661FA", "color": "BLANCO", "ubicacion": "MADERO ALEM 828", "is_taller": false, "dias": 27, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 143, "marca": "VOLKSWAGEN", "modelo": "AMAROK", "version": "AMAROK V6 30TD 4X4 DC AT EXTREME", "trans": "AT", "combust": "DIESEL", "kms": 79000, "anio": 2020, "tipo": "PICKUP", "dominio": "AE240HA", "color": "DORADA", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 27, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 144, "marca": "VOLKSWAGEN", "modelo": "AMAROK", "version": "AMAROK V6 30TD 4X4 DC AT EXTREME", "trans": "AT", "combust": "DIESEL", "kms": 50412, "anio": 2025, "tipo": "PICKUP", "dominio": "AH338VB", "color": "GRIS", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 63, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 145, "marca": "VOLKSWAGEN", "modelo": "FOX", "version": "FOX 1.6 5 P. COMFORTLINE", "trans": "MT", "combust": "NAFTA", "kms": 111000, "anio": 2013, "tipo": "SEDAN 5 PUERTAS", "dominio": "OKY696", "color": "GRIS OSCURO", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 505, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 146, "marca": "VOLKSWAGEN", "modelo": "SURAN", "version": "SURAN 1.6 HIGHLINE", "trans": "MT", "combust": "NAFTA", "kms": 105000, "anio": 2016, "tipo": "SEDAN 5 PUERTAS", "dominio": "PLG858", "color": "BLANCA CRISTAL", "ubicacion": "MAURO ( MIRA TU AUTO)", "is_taller": false, "dias": 290, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 147, "marca": "VOLKSWAGEN", "modelo": "GOL", "version": "GOL TREND 1.6 5 P", "trans": "MT", "combust": "NAFTA", "kms": 154000, "anio": 2017, "tipo": "SEDAN 5 PUERTAS", "dominio": "AB606QR", "color": "BLANCO", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 51, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 148, "marca": "VOLKSWAGEN", "modelo": "GOL", "version": "GOL TREND 1.6 MSI", "trans": "MT", "combust": "NAFTA", "kms": 121790, "anio": 2017, "tipo": "SEDAN 3 PUERTAS", "dominio": "AA948YX", "color": "BLANCO", "ubicacion": "MOVIMIENTO", "is_taller": true, "dias": 568, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 6}, {"id": 149, "marca": "VOLKSWAGEN", "modelo": "SAVEIRO", "version": "SAVEIRO 16 GP", "trans": "MT", "combust": "NAFTA", "kms": 146075, "anio": 2016, "tipo": "PICKUP", "dominio": "AA069ZG", "color": "GRIS", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 568, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 150, "marca": "VOLKSWAGEN", "modelo": "AMAROK", "version": "AMAROK DC 2.0L TDI 140CV 4x2", "trans": "MT", "combust": "DIESEL", "kms": 134570, "anio": 2021, "tipo": "PICKUP", "dominio": "AE734KK", "color": "BLANCO", "ubicacion": "MADERO ALEM 828", "is_taller": false, "dias": 273, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 151, "marca": "VOLKSWAGEN", "modelo": "SURAN", "version": "SURAN 1.6 TRENDLINE     ABS", "trans": "MT", "combust": "NAFTA", "kms": 148000, "anio": 2014, "tipo": "SEDAN 5 PUERTAS", "dominio": "NNN809", "color": "GRIS OSCURO", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 62, "aging_cat": "31-90 días", "aging_status": "Normal", "aging_badge": "blue", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 152, "marca": "VOLKSWAGEN", "modelo": "AMAROK", "version": "AMAROK V6 30TD 4X4 DC AT COMFORT", "trans": "AT", "combust": "DIESEL", "kms": 0, "anio": 2026, "tipo": "PICKUP", "dominio": "", "color": "GRIS PIRITA", "ubicacion": "Sin asignar / Salón no especificado", "is_taller": false, "dias": 8, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 153, "marca": "VOLKSWAGEN", "modelo": "AMAROK", "version": "AMAROK 20TD 4X2 DC COMFORTLINE MT", "trans": "MT", "combust": "DIESEL", "kms": 220000, "anio": 2017, "tipo": "PICKUP", "dominio": "AB236AU", "color": "AZUL", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 93, "aging_cat": "91-180 días", "aging_status": "Alerta", "aging_badge": "yellow", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 154, "marca": "VOLKSWAGEN", "modelo": "AMAROK", "version": "AMAROK DC 2.0L TDI 140CV 4x2", "trans": "MT", "combust": "DIESEL", "kms": 129, "anio": 2017, "tipo": "PICKUP", "dominio": "AB309IQ", "color": "BLANCA", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 325, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 4}, {"id": 155, "marca": "VOLKSWAGEN", "modelo": "AMAROK", "version": "AMAROK DC 2.0L TDI 140 CV 919 4X4", "trans": "MT", "combust": "DIESEL", "kms": 152500, "anio": 2017, "tipo": "PICKUP", "dominio": "AB318QG", "color": "BLANCO", "ubicacion": "MADERO ALEM 828", "is_taller": false, "dias": 342, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 156, "marca": "VOLKSWAGEN", "modelo": "AMAROK", "version": "AMAROK 30TD 4X4 DC COMFORTLINE AT", "trans": "AT", "combust": "DIESEL", "kms": 0, "anio": 2026, "tipo": "PICKUP", "dominio": "0KM", "color": "PLATA PIRITA", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 7, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 157, "marca": "VOLKSWAGEN", "modelo": "AMAROK", "version": "AMAROK 30TD 4X4 DC COMFORTLINE AT", "trans": "AT", "combust": "DIESEL", "kms": 0, "anio": 2026, "tipo": "PICKUP", "dominio": "0KM", "color": "GRIS SALVIA", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 7, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 158, "marca": "VOLKSWAGEN", "modelo": "AMAROK", "version": "AMAROK 20TD 4X4 DC HIGHLINE", "trans": "MT", "combust": "DIESEL", "kms": 263152, "anio": 2011, "tipo": "PICKUP", "dominio": "KPF855", "color": "GRIS PLATA", "ubicacion": "LUCAS MECANICO", "is_taller": true, "dias": 568, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 159, "marca": "VOLKSWAGEN", "modelo": "AMAROK", "version": "AMAROK 20TD 4X4 DC HIGHLINE", "trans": "MT", "combust": "DIESEL", "kms": 0, "anio": 2011, "tipo": "PICKUP", "dominio": "KCA800", "color": "GRIS", "ubicacion": "DANI MECANICO (ALEM)", "is_taller": true, "dias": 568, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 160, "marca": "VOLKSWAGEN", "modelo": "AMAROK", "version": "AMAROK 20TD 4X4 DC HIGHLINE", "trans": "MT", "combust": "DIESEL", "kms": 200000, "anio": 2014, "tipo": "PICKUP", "dominio": "OHU244", "color": "blanca", "ubicacion": "MADERO NEUQUEN", "is_taller": false, "dias": 100, "aging_cat": "91-180 días", "aging_status": "Alerta", "aging_badge": "yellow", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 161, "marca": "VOLKSWAGEN", "modelo": "AMAROK", "version": "AMAROK 20TD 4X2 DC TRENDLINE MT", "trans": "MT", "combust": "DIESEL", "kms": 175000, "anio": 2012, "tipo": "PICKUP", "dominio": "LLJ029", "color": "GRIS", "ubicacion": "GALPON", "is_taller": true, "dias": 21, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 162, "marca": "VOLKSWAGEN", "modelo": "AMAROK", "version": "AMAROK 20TD 4X2 DC TRENDLINE MT", "trans": "MT", "combust": "DIESEL", "kms": 146000, "anio": 2014, "tipo": "PICKUP", "dominio": "NYN005", "color": "BEIGE", "ubicacion": "MADERO ALEM 828", "is_taller": false, "dias": 121, "aging_cat": "91-180 días", "aging_status": "Alerta", "aging_badge": "yellow", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 163, "marca": "VOLKSWAGEN", "modelo": "AMAROK", "version": "AMAROK 20TD 4X2 DC TRENDLINE", "trans": "MT", "combust": "DIESEL", "kms": 151580, "anio": 2013, "tipo": "PICKUP", "dominio": "MGO044", "color": "GRIS PLATA", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 568, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": true, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 164, "marca": "VOLKSWAGEN", "modelo": "AMAROK", "version": "AMAROK 20TD 4X2 DC CONFORTLINE MT", "trans": "MT", "combust": "DIESEL", "kms": 152000, "anio": 2018, "tipo": "PICKUP", "dominio": "AC399OH", "color": "NEGRO", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 483, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 165, "marca": "VOLKSWAGEN", "modelo": "AMAROK", "version": "AMAROK 20TD 4X2 DC COMFORT. 180HP", "trans": "AT", "combust": "DIESEL", "kms": 116721, "anio": 2022, "tipo": "PICKUP", "dominio": "AF628SR", "color": "BLANCO", "ubicacion": "MADERO ALEM 828", "is_taller": false, "dias": 395, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 166, "marca": "VOLKSWAGEN", "modelo": "VOYAGE", "version": "VOYAGE 1.6 GP", "trans": "MT", "combust": "NAFTA", "kms": 130000, "anio": 2014, "tipo": "SEDAN 4 PUERTAS", "dominio": "OHJ918", "color": "BLANCO", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 477, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": false, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}], "locations": [{"nombre": "MADERO NEUQUEN", "is_taller": false, "unidades": 39, "dias_promedio": 158.9, "con_foto": 28, "sin_foto": 11, "reservadas": 0}, {"nombre": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "unidades": 28, "dias_promedio": 291.2, "con_foto": 11, "sin_foto": 17, "reservadas": 2}, {"nombre": "AV POLONIA 546", "is_taller": false, "unidades": 27, "dias_promedio": 250.9, "con_foto": 26, "sin_foto": 1, "reservadas": 1}, {"nombre": "MADERO ALEM 828", "is_taller": false, "unidades": 20, "dias_promedio": 155.3, "con_foto": 20, "sin_foto": 0, "reservadas": 0}, {"nombre": "Sin asignar / Salón no especificado", "is_taller": false, "unidades": 12, "dias_promedio": 31.6, "con_foto": 0, "sin_foto": 12, "reservadas": 0}, {"nombre": "MAURO ( MIRA TU AUTO)", "is_taller": false, "unidades": 10, "dias_promedio": 435.0, "con_foto": 0, "sin_foto": 10, "reservadas": 0}, {"nombre": "LUCAS MECANICO", "is_taller": true, "unidades": 6, "dias_promedio": 363.0, "con_foto": 0, "sin_foto": 6, "reservadas": 1}, {"nombre": "GALPON", "is_taller": true, "unidades": 6, "dias_promedio": 204.8, "con_foto": 0, "sin_foto": 6, "reservadas": 0}, {"nombre": "MOVIMIENTO", "is_taller": true, "unidades": 5, "dias_promedio": 478.8, "con_foto": 3, "sin_foto": 2, "reservadas": 0}, {"nombre": "Lago Puelo (Carlos)", "is_taller": false, "unidades": 4, "dias_promedio": 429.8, "con_foto": 2, "sin_foto": 2, "reservadas": 0}, {"nombre": "DANI MECANICO (ALEM)", "is_taller": true, "unidades": 3, "dias_promedio": 386.0, "con_foto": 1, "sin_foto": 2, "reservadas": 0}, {"nombre": "BILOVA S.A.S (CHAPISTA NEUQUEN)", "is_taller": true, "unidades": 2, "dias_promedio": 21.5, "con_foto": 0, "sin_foto": 2, "reservadas": 0}, {"nombre": "0KM PARA OFRECER !! MIRAR DESCRIPCION", "is_taller": false, "unidades": 1, "dias_promedio": 39.0, "con_foto": 0, "sin_foto": 1, "reservadas": 0}, {"nombre": "GERMAN CHAPISTA", "is_taller": true, "unidades": 1, "dias_promedio": 15.0, "con_foto": 0, "sin_foto": 1, "reservadas": 0}, {"nombre": "MOHE SERVICE SRL", "is_taller": true, "unidades": 1, "dias_promedio": 419.0, "con_foto": 1, "sin_foto": 0, "reservadas": 0}, {"nombre": "B&M CHAPA Y PINTURA", "is_taller": true, "unidades": 1, "dias_promedio": 8.0, "con_foto": 0, "sin_foto": 1, "reservadas": 0}], "workshops": [{"nombre": "LUCAS MECANICO", "is_taller": true, "unidades": 6, "dias_promedio": 363.0, "con_foto": 0, "sin_foto": 6, "reservadas": 1}, {"nombre": "GALPON", "is_taller": true, "unidades": 6, "dias_promedio": 204.8, "con_foto": 0, "sin_foto": 6, "reservadas": 0}, {"nombre": "MOVIMIENTO", "is_taller": true, "unidades": 5, "dias_promedio": 478.8, "con_foto": 3, "sin_foto": 2, "reservadas": 0}, {"nombre": "DANI MECANICO (ALEM)", "is_taller": true, "unidades": 3, "dias_promedio": 386.0, "con_foto": 1, "sin_foto": 2, "reservadas": 0}, {"nombre": "BILOVA S.A.S (CHAPISTA NEUQUEN)", "is_taller": true, "unidades": 2, "dias_promedio": 21.5, "con_foto": 0, "sin_foto": 2, "reservadas": 0}, {"nombre": "GERMAN CHAPISTA", "is_taller": true, "unidades": 1, "dias_promedio": 15.0, "con_foto": 0, "sin_foto": 1, "reservadas": 0}, {"nombre": "MOHE SERVICE SRL", "is_taller": true, "unidades": 1, "dias_promedio": 419.0, "con_foto": 1, "sin_foto": 0, "reservadas": 0}, {"nombre": "B&M CHAPA Y PINTURA", "is_taller": true, "unidades": 1, "dias_promedio": 8.0, "con_foto": 0, "sin_foto": 1, "reservadas": 0}], "pre_delivery": [{"id": 83, "marca": "FORD", "modelo": "FOCUS", "version": "FOCUS 2.0 5 P SE", "trans": "MT", "combust": "NAFTA", "kms": 135694, "anio": 2017, "tipo": "SEDAN 5 PUERTAS", "dominio": "AA740EU", "color": "GRIS PLATA", "ubicacion": "LUCAS MECANICO", "is_taller": true, "dias": 295, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": true, "consignada": false, "tiene_foto": false, "cantidad_fotos": 0}, {"id": 87, "marca": "FORD", "modelo": "KUGA", "version": "KUGA 2.0 SEL      4X4 AUT", "trans": "AT", "combust": "NAFTA", "kms": 156810, "anio": 2017, "tipo": "SUV", "dominio": "AB359LV", "color": "Blanco", "ubicacion": "AV POLONIA 546", "is_taller": false, "dias": 300, "aging_cat": "181-365 días", "aging_status": "Crítico", "aging_badge": "orange", "reservada": true, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 131, "marca": "TOYOTA", "modelo": "HILUX", "version": "HILUX 2.8 DC 4X4 TDI SRV", "trans": "MT", "combust": "DIESEL", "kms": 128000, "anio": 2018, "tipo": "PICKUP", "dominio": "AD292IB", "color": "BLANCO", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 27, "aging_cat": "0-30 días", "aging_status": "Fresco", "aging_badge": "green", "reservada": true, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}, {"id": 163, "marca": "VOLKSWAGEN", "modelo": "AMAROK", "version": "AMAROK 20TD 4X2 DC TRENDLINE", "trans": "MT", "combust": "DIESEL", "kms": 151580, "anio": 2013, "tipo": "PICKUP", "dominio": "MGO044", "color": "GRIS PLATA", "ubicacion": "MADERO MONSEÑOR D´ANDREA 1967", "is_taller": false, "dias": 568, "aging_cat": "+365 días", "aging_status": "Inmovilizado", "aging_badge": "red", "reservada": true, "consignada": false, "tiene_foto": true, "cantidad_fotos": 5}]};
+
+    // State
+    let activeStatusFilter = 'ALL';
+    let activePhotoFilter = 'ALL';
+    let activeLocationFilter = '';
+    let filteredStock = [...DATA.stock_items];
+    let sortKey = 'dias';
+    let sortAsc = false;
+
+    // Tab Navigation
+    function switchTab(tabId) {
+      const tabs = ['flujo', 'inventario', 'talleres', 'fotografia', 'entrega'];
+      tabs.forEach(t => {
+        const el = document.getElementById('tab-' + t);
+        const btn = document.getElementById('dock-btn-' + t);
+        const btnMob = document.getElementById('dock-btn-' + t + '-mob');
+        if (el) {
+          if (t === tabId) el.classList.remove('hidden');
+          else el.classList.add('hidden');
+        }
+        if (btn) {
+          if (t === tabId) btn.classList.add('tab-btn-active');
+          else btn.classList.remove('tab-btn-active');
+        }
+        if (btnMob) {
+          if (t === tabId) btnMob.classList.add('tab-btn-active');
+          else btnMob.classList.remove('tab-btn-active');
+        }
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function switchTabAndFilter(tabId, statusFilter) {
+      switchTab(tabId);
+      if (statusFilter === 'SIN_FOTO') {
+        setPhotoFilter('SIN_FOTO');
+        setStatusFilter('ALL');
+      } else {
+        setStatusFilter(statusFilter);
+        setPhotoFilter('ALL');
+      }
+    }
+
+    // Filter Controls
+    function setStatusFilter(filter) {
+      activeStatusFilter = filter;
+      ['ALL', 'RESERVADA', 'TALLER', 'DISPONIBLE'].forEach(f => {
+        const btn = document.getElementById('status-btn-' + f);
+        if (btn) {
+          if (f === filter) btn.className = 'px-2.5 py-1 rounded-lg bg-white text-stone-900 shadow-xs whitespace-nowrap';
+          else btn.className = 'px-2.5 py-1 rounded-lg text-stone-600 hover:text-stone-900 flex items-center gap-1 whitespace-nowrap';
+        }
+      });
+      applyFilters();
+    }
+
+    function setPhotoFilter(filter) {
+      activePhotoFilter = filter;
+      ['ALL', 'CON_FOTO', 'SIN_FOTO'].forEach(f => {
+        const btn = document.getElementById('photo-btn-' + f);
+        if (btn) {
+          if (f === filter) btn.className = 'px-2.5 py-1 rounded-lg bg-white text-stone-900 shadow-xs whitespace-nowrap';
+          else btn.className = 'px-2.5 py-1 rounded-lg text-stone-600 hover:text-stone-900 flex items-center gap-1 whitespace-nowrap';
+        }
+      });
+      applyFilters();
+    }
+
+    function populateDropdownFilters() {
+      // Brands
+      const selBrand = document.getElementById('filter-brand');
+      if (selBrand) {
+        const curBrand = selBrand.value;
+        selBrand.innerHTML = '<option value="">Todas las Marcas</option>';
+        const brands = [...new Set(DATA.stock_items.map(i => i.marca))].sort();
+        brands.forEach(b => {
+          const opt = document.createElement('option');
+          opt.value = b;
+          opt.innerText = b;
+          if (b === curBrand) opt.selected = true;
+          selBrand.appendChild(opt);
+        });
+      }
+
+      // Locations
+      const selLoc = document.getElementById('filter-location');
+      if (selLoc) {
+        const curLoc = selLoc.value;
+        selLoc.innerHTML = '<option value="">Todas las Ubicaciones / Talleres</option>';
+        const locs = [...new Set(DATA.stock_items.map(i => i.ubicacion))].sort();
+        locs.forEach(l => {
+          const opt = document.createElement('option');
+          opt.value = l;
+          opt.innerText = l;
+          if (l === curLoc) opt.selected = true;
+          selLoc.appendChild(opt);
+        });
+      }
+    }
+
+    function applyFilters() {
+      const search = (document.getElementById('filter-search')?.value || '').toLowerCase().trim();
+      const brand = document.getElementById('filter-brand')?.value || '';
+      const location = document.getElementById('filter-location')?.value || '';
+
+      filteredStock = DATA.stock_items.filter(item => {
+        if (activeStatusFilter === 'DISPONIBLE' && (item.reservada || item.is_taller)) return false;
+        if (activeStatusFilter === 'TALLER' && !item.is_taller) return false;
+        if (activeStatusFilter === 'RESERVADA' && !item.reservada) return false;
+        if (activePhotoFilter === 'CON_FOTO' && !item.tiene_foto) return false;
+        if (activePhotoFilter === 'SIN_FOTO' && item.tiene_foto) return false;
+        if (brand && item.marca !== brand) return false;
+        if (location && item.ubicacion !== location) return false;
+        if (search) {
+          const match = 
+            item.marca.toLowerCase().includes(search) ||
+            item.modelo.toLowerCase().includes(search) ||
+            (item.dominio && item.dominio.toLowerCase().includes(search)) ||
+            item.ubicacion.toLowerCase().includes(search) ||
+            (item.color && item.color.toLowerCase().includes(search)) ||
+            (item.version && item.version.toLowerCase().includes(search));
+          if (!match) return false;
+        }
+        return true;
+      });
+
+      sortStockArray();
+      renderOperationalTable();
+    }
+
+    function sortTable(key) {
+      if (sortKey === key) {
+        sortAsc = !sortAsc;
+      } else {
+        sortKey = key;
+        sortAsc = true;
+      }
+      sortStockArray();
+      renderOperationalTable();
+    }
+
+    function sortStockArray() {
+      filteredStock.sort((a, b) => {
+        let vA, vB;
+        if (sortKey === 'estado') {
+          vA = a.reservada ? 'Reservado' : (a.is_taller ? 'En Taller' : 'Disponible');
+          vB = b.reservada ? 'Reservado' : (b.is_taller ? 'En Taller' : 'Disponible');
+        } else {
+          vA = a[sortKey];
+          vB = b[sortKey];
+        }
+        if (typeof vA === 'boolean') {
+          vA = vA ? 1 : 0;
+          vB = vB ? 1 : 0;
+        } else if (typeof vA === 'string') {
+          vA = vA.toLowerCase();
+          vB = vB.toLowerCase();
+        }
+        if (vA < vB) return sortAsc ? -1 : 1;
+        if (vA > vB) return sortAsc ? 1 : -1;
+        return 0;
+      });
+    }
+
+    // Render Table
+    function renderOperationalTable() {
+      const tbody = document.getElementById('operational-stock-tbody');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+
+      filteredStock.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-white/40 transition';
+
+        let badgeEstado = '<span class="badge-pill badge-emerald">Disponible</span>';
+        if (item.reservada) badgeEstado = '<span class="badge-pill badge-blue font-bold">Reservado</span>';
+        else if (item.is_taller) badgeEstado = '<span class="badge-pill badge-amber font-semibold">En Taller</span>';
+
+        let badgeDias = `<span class="badge-pill badge-emerald">${item.dias} d.</span>`;
+        if (item.dias > 365) badgeDias = `<span class="badge-pill badge-red font-bold">${item.dias} d.</span>`;
+        else if (item.dias > 180) badgeDias = `<span class="badge-pill badge-amber font-semibold">${item.dias} d.</span>`;
+        else if (item.dias > 90) badgeDias = `<span class="badge-pill badge-blue">${item.dias} d.</span>`;
+
+        let badgeFotos = item.tiene_foto
+          ? `<span class="badge-pill badge-emerald" title="${item.cantidad_fotos} fotos en Lucy">Con Foto (${item.cantidad_fotos})</span>`
+          : '<span class="badge-pill badge-red font-semibold">Sin Foto</span>';
+
+        const kmsFormatted = item.kms ? Math.round(item.kms).toLocaleString('es-AR') + ' km' : '0 km';
+        const transComb = `${item.trans || 'MT'} · ${item.combust || 'NAFTA'}`;
+
+        tr.innerHTML = `
+          <td class="py-2.5 px-3">
+            <span class="font-bold text-stone-900 block">${item.marca} ${item.modelo}</span>
+            <span class="text-[10px] text-stone-500 font-mono truncate max-w-[180px] block">${item.version || ''}</span>
+          </td>
+          <td class="py-2.5 px-2">
+            <span class="font-mono text-stone-900 font-bold px-1.5 py-0.5 rounded-md bg-stone-200/70 border border-stone-300 text-xs">${item.dominio || '0KM'}</span>
+          </td>
+          <td class="py-2.5 px-2 text-stone-700 font-medium">${item.anio}</td>
+          <td class="py-2.5 px-2 text-stone-600">${item.color || '-'}</td>
+          <td class="py-2.5 px-2 text-right font-mono text-stone-700">${kmsFormatted}</td>
+          <td class="py-2.5 px-2 text-center text-[10px] text-stone-500 font-mono">${transComb}</td>
+          <td class="py-2.5 px-3 text-stone-700 truncate max-w-[150px]" title="${item.ubicacion}">
+            <span class="${item.is_taller ? 'text-amber-800 font-semibold' : ''}">${item.ubicacion}</span>
+          </td>
+          <td class="py-2.5 px-2 text-center">${badgeDias}</td>
+          <td class="py-2.5 px-2 text-center">${badgeFotos}</td>
+          <td class="py-2.5 px-2 text-center">${badgeEstado}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      const dispCount = filteredStock.filter(i => !i.reservada && !i.is_taller).length;
+      const tallerCount = filteredStock.filter(i => i.is_taller).length;
+      const resCount = filteredStock.filter(i => i.reservada).length;
+      const countEl = document.getElementById('filtered-stock-count');
+      if (countEl) {
+        countEl.innerText = `Mostrando ${filteredStock.length} unidades (${dispCount} disponibles · ${tallerCount} en taller · ${resCount} reservadas)`;
+      }
+    }
+
+    // Render Pre-Delivery Mini List on Tab 1
+    function renderPreDeliveryMini() {
+      const container = document.getElementById('pre-delivery-list');
+      if (!container) return;
+      container.innerHTML = '';
+
+      (DATA.pre_delivery || []).forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'p-3 rounded-2xl bg-white/70 border border-stone-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 hover:bg-white transition';
+
+        const dom = item.dominio || ('ID_' + item.id);
+        const checksDone = [0,1,2,3].filter(idx => localStorage.getItem('madero_check_' + dom + '_' + idx) === 'true').length;
+        const progressBadge = checksDone === 4 
+          ? '<span class="badge-pill badge-emerald font-bold">¡Checklist 100%!</span>'
+          : `<span class="badge-pill badge-blue">${checksDone}/4 checklist</span>`;
+
+        const isTallerWarning = item.is_taller ? '<span class="badge-pill badge-red font-bold">¡En Taller!</span>' : '<span class="badge-pill badge-emerald">En Salón</span>';
+
+        div.innerHTML = `
+          <div class="flex items-center gap-2.5 min-w-0">
+            <span class="font-mono text-xs sm:text-sm font-extrabold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-stone-900 text-white shrink-0">${item.dominio || '0KM'}</span>
+            <div class="min-w-0">
+              <span class="font-bold text-stone-900 block text-xs sm:text-sm truncate">${item.marca} ${item.modelo} (${item.anio})</span>
+              <span class="text-[10px] sm:text-[11px] text-stone-500 block truncate">${item.color} · ${Math.round(item.kms).toLocaleString('es-AR')} km · ${item.ubicacion}</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5 self-end sm:self-auto shrink-0">
+            ${progressBadge}
+            ${isTallerWarning}
+            <span class="badge-pill badge-blue">${item.dias} d.</span>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    // Render Taller Summary on Tab 1
+    function renderTallerSummary() {
+      const container = document.getElementById('taller-summary-cards');
+      if (!container) return;
+      container.innerHTML = '';
+
+      DATA.workshops.slice(0, 4).forEach(t => {
+        const div = document.createElement('div');
+        div.className = 'p-3.5 rounded-2xl bg-white/60 border border-stone-200';
+        div.innerHTML = `
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="font-bold text-stone-900 text-xs truncate max-w-[140px]">${t.nombre}</span>
+            <span class="badge-pill badge-amber font-mono font-bold">${t.unidades} un.</span>
+          </div>
+          <p class="text-[11px] text-stone-500">Permanencia media: <strong>${t.dias_promedio} días</strong></p>
+          <div class="mt-2 pt-2 border-t border-stone-200/50 flex justify-between text-[10px] text-stone-500">
+            <span>Fotos: ${t.con_foto} con / ${t.sin_foto} sin</span>
+            <span class="text-amber-800 font-semibold cursor-pointer" onclick="filterByLocationDirect('${t.nombre}')">Filtrar →</span>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    // Render Workshops Full Grid on Tab 3
+    function renderWorkshopsGrid() {
+      const container = document.getElementById('workshops-cards-grid');
+      if (!container) return;
+      container.innerHTML = '';
+
+      DATA.workshops.forEach(w => {
+        const card = document.createElement('div');
+        card.className = 'p-4 sm:p-5 rounded-2xl bg-white/70 border border-stone-200 hover:shadow-md transition';
+
+        const units = DATA.stock_items.filter(i => i.ubicacion === w.nombre);
+
+        let unitsHtml = '';
+        units.forEach(u => {
+          unitsHtml += `
+            <div class="flex items-center justify-between py-1.5 border-b border-stone-100 last:border-0 text-xs">
+              <div class="truncate mr-2">
+                <span class="font-mono font-bold text-stone-900 mr-1">${u.dominio || '0KM'}</span>
+                <span class="text-stone-700">${u.marca} ${u.modelo}</span>
+              </div>
+              <span class="badge-pill ${u.dias > 180 ? 'badge-red' : 'badge-amber'} text-[10px] shrink-0">${u.dias} d.</span>
+            </div>
+          `;
+        });
+
+        card.innerHTML = `
+          <div class="flex items-center justify-between mb-2.5 pb-2 border-b border-stone-200">
+            <div class="min-w-0 mr-2">
+              <h3 class="font-bold text-stone-900 text-xs sm:text-sm truncate">${w.nombre}</h3>
+              <p class="text-[10px] sm:text-[11px] text-stone-500">Media: ${w.dias_promedio} días</p>
+            </div>
+            <span class="badge-pill badge-amber font-bold text-xs shrink-0">${w.unidades} un.</span>
+          </div>
+          <div class="space-y-1 mb-3">
+            ${unitsHtml}
+          </div>
+          <button onclick="filterByLocationDirect('${w.nombre}')" class="w-full py-1.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 text-xs font-semibold transition text-center">
+            Ver unidades en Inventario →
+          </button>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Render Photo Plan on Tab 4
+    function renderPhotoPlan() {
+      const container = document.getElementById('photo-plan-by-branch');
+      if (!container) return;
+      container.innerHTML = '';
+
+      // Group units without photos by location
+      const pendingUnits = DATA.stock_items.filter(i => !i.tiene_foto);
+      const groups = {};
+
+      pendingUnits.forEach(u => {
+        if (!groups[u.ubicacion]) groups[u.ubicacion] = [];
+        groups[u.ubicacion].push(u);
+      });
+
+      Object.keys(groups).sort((a,b) => groups[b].length - groups[a].length).forEach(loc => {
+        const list = groups[loc];
+        const card = document.createElement('div');
+        card.className = 'p-4 sm:p-5 rounded-2xl bg-white/70 border border-stone-200';
+
+        let rowsHtml = '';
+        list.forEach(u => {
+          rowsHtml += `
+            <div class="flex items-center justify-between p-2 rounded-xl bg-stone-50 border border-stone-200/60 gap-2">
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="font-mono text-[11px] font-bold px-1.5 py-0.5 rounded bg-white border border-stone-300 text-stone-900 shrink-0">${u.dominio || '0KM'}</span>
+                <div class="min-w-0">
+                  <span class="font-bold text-stone-900 text-xs block truncate">${u.marca} ${u.modelo} (${u.anio})</span>
+                  <span class="text-[10px] text-stone-500 block truncate">${u.color || 'Color n/d'} · ${Math.round(u.kms).toLocaleString('es-AR')} km</span>
+                </div>
+              </div>
+              <span class="badge-pill ${u.is_taller ? 'badge-amber' : 'badge-emerald'} text-[9px] shrink-0">${u.is_taller ? 'Taller' : 'Salón'}</span>
+            </div>
+          `;
+        });
+
+        card.innerHTML = `
+          <div class="flex items-center justify-between mb-3 pb-2 border-b border-stone-200">
+            <div class="flex items-center gap-2 min-w-0 mr-2">
+              <h3 class="font-bold text-stone-900 text-xs sm:text-sm truncate">${loc}</h3>
+              <span class="badge-pill badge-red shrink-0">${list.length} pendientes</span>
+            </div>
+            <button onclick="filterByLocationDirect('${loc}')" class="text-xs text-stone-600 hover:text-stone-900 font-semibold shrink-0">Filtrar →</button>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+            ${rowsHtml}
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Helper DOM setters
+    function setElText(id, text) {
+      const el = document.getElementById(id);
+      if (el) el.innerText = text;
+    }
+    function setElHtml(id, html) {
+      const el = document.getElementById(id);
+      if (el) el.innerHTML = html;
+    }
+
+    // Render Pre-Delivery Full Grid on Tab 5 with LocalStorage Checklist
+    function renderPreDeliveryGrid() {
+      const container = document.getElementById('pre-delivery-cards-grid');
+      if (!container) return;
+      container.innerHTML = '';
+
+      (DATA.pre_delivery || []).forEach(u => {
+        const card = document.createElement('div');
+        card.className = 'p-4 sm:p-6 rounded-2xl bg-white/80 border border-stone-200 shadow-xs flex flex-col justify-between';
+
+        const dom = u.dominio || ('ID_' + u.id);
+        const steps = [
+          '1. Revisión mecánica de fluidos, batería y luces',
+          '2. Lavado integral de chasis, carrocería y motor',
+          '3. Limpieza profunda de tapizados y acondicionamiento',
+          '4. Verificación de auxilio, llave duplicada y manual'
+        ];
+
+        let checksCompleted = 0;
+        let checksHtml = '';
+        steps.forEach((label, idx) => {
+          const key = `madero_check_${dom}_${idx}`;
+          const isChecked = localStorage.getItem(key) === 'true';
+          if (isChecked) checksCompleted++;
+          checksHtml += `
+            <label class="flex items-center justify-between text-[11px] sm:text-xs text-stone-700 p-2 rounded-lg bg-stone-50 border border-stone-200/60 cursor-pointer hover:bg-stone-100/80 transition">
+              <div class="flex items-center gap-2">
+                <input type="checkbox" onchange="togglePreDeliveryCheck('${dom}', ${idx}, this.checked)" ${isChecked ? 'checked' : ''} class="rounded text-stone-900 focus:ring-0">
+                <span class="${isChecked ? 'line-through text-stone-400 font-medium' : ''}">${label}</span>
+              </div>
+              ${isChecked ? '<span class="text-[9px] text-emerald-600 font-bold">OK</span>' : ''}
+            </label>
+          `;
+        });
+
+        const statusBadge = checksCompleted === 4
+          ? '<span class="badge-pill badge-emerald font-bold">¡100% Listo para Entrega!</span>'
+          : `<span class="badge-pill badge-blue font-bold">${checksCompleted}/4 pasos</span>`;
+
+        const warningTaller = u.is_taller 
+          ? '<div class="p-2.5 sm:p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-900 text-xs font-semibold mb-3 sm:mb-4 flex items-center gap-2"><svg class="w-4 h-4 text-rose-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg> Atención: Unidad en taller (' + u.ubicacion + '). Se requiere acelerar reparación.</div>' 
+          : '<div class="p-2.5 sm:p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs font-semibold mb-3 sm:mb-4 flex items-center gap-2"><svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Unidad en salón (' + u.ubicacion + ') lista para checklist.</div>';
+
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-2 sm:mb-3">
+              <span class="font-mono text-sm sm:text-base font-extrabold px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-xl bg-stone-900 text-white">${u.dominio || '0KM'}</span>
+              <div class="flex items-center gap-1.5">
+                ${statusBadge}
+                <span class="badge-pill badge-blue font-bold text-[10px] sm:text-xs">RESERVADO</span>
+              </div>
+            </div>
+
+            <h3 class="text-sm sm:text-base font-extrabold text-stone-900 mb-1">${u.marca} ${u.modelo} ${u.version || ''}</h3>
+            <p class="text-[11px] sm:text-xs text-stone-600 mb-3 sm:mb-4">${u.anio} · ${u.color || 'Color n/d'} · ${Math.round(u.kms).toLocaleString('es-AR')} km · ${u.trans} · ${u.combust}</p>
+
+            ${warningTaller}
+
+            <div class="space-y-1.5 sm:space-y-2 mb-4 sm:mb-6">
+              <div class="flex items-center justify-between mb-1">
+                <h4 class="text-[11px] sm:text-xs font-bold text-stone-800 uppercase tracking-wider">Checklist de Alistamiento:</h4>
+                <button onclick="resetPreDeliveryChecklist('${dom}')" class="text-[10px] text-stone-400 hover:text-stone-700 underline">Reiniciar</button>
+              </div>
+              ${checksHtml}
+            </div>
+          </div>
+
+          <div class="pt-2.5 sm:pt-3 border-t border-stone-200 flex justify-between items-center text-xs text-stone-500">
+            <span>Permanencia: <strong>${u.dias} días</strong></span>
+            <button onclick="filterByLocationDirect('${u.ubicacion}')" class="text-stone-900 font-semibold hover:underline">Ver en Inventario →</button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function togglePreDeliveryCheck(dom, stepIndex, checked) {
+      const key = `madero_check_${dom}_${stepIndex}`;
+      if (checked) {
+        localStorage.setItem(key, 'true');
+      } else {
+        localStorage.removeItem(key);
+      }
+      renderPreDeliveryGrid();
+      renderPreDeliveryMini();
+    }
+
+    function resetPreDeliveryChecklist(dom) {
+      if (confirm(`¿Reiniciar el checklist de la unidad ${dom}?`)) {
+        [0, 1, 2, 3].forEach(idx => localStorage.removeItem(`madero_check_${dom}_${idx}`));
+        renderPreDeliveryGrid();
+        renderPreDeliveryMini();
+      }
+    }
+
+    function updateAgingBars() {
+      const container = document.getElementById('aging-bars-container');
+      if (!container || !DATA.stock_items) return;
+
+      const total = DATA.stock_items.length;
+      if (total === 0) return;
+
+      setElText('aging-total-badge', `${total} unidades`);
+
+      const ranges = [
+        { label: '0 - 30 días (Fresco)', filter: i => i.dias <= 30, colorText: 'text-emerald-400', colorBar: 'bg-emerald-500' },
+        { label: '31 - 90 días (Normal)', filter: i => i.dias > 30 && i.dias <= 90, colorText: 'text-blue-400', colorBar: 'bg-blue-500' },
+        { label: '91 - 180 días (Alerta)', filter: i => i.dias > 90 && i.dias <= 180, colorText: 'text-amber-400', colorBar: 'bg-amber-500' },
+        { label: '181 - 365 días (Crítico)', filter: i => i.dias > 180 && i.dias <= 365, colorText: 'text-rose-400', colorBar: 'bg-rose-400' },
+        { label: '+365 días (Inmovilizado)', filter: i => i.dias > 365, colorText: 'text-red-500', colorBar: 'bg-rose-600' }
+      ];
+
+      let html = '';
+      ranges.forEach(r => {
+        const count = DATA.stock_items.filter(r.filter).length;
+        const pct = Math.round((count / total) * 100);
+        html += `
+          <div>
+            <div class="flex justify-between text-xs mb-1">
+              <span class="${r.colorText} font-medium">${r.label}</span>
+              <span class="text-stone-300 font-mono font-bold">${count} un. (${pct}%)</span>
+            </div>
+            <div class="w-full h-2 rounded-full bg-white/10 overflow-hidden">
+              <div class="h-full ${r.colorBar} rounded-full transition-all duration-500" style="width: ${pct}%"></div>
+            </div>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+    }
+
+    function updateAllViews(freshData) {
+      if (freshData && freshData.stock_items) {
+        DATA = freshData;
+      }
+
+      const summary = DATA.operational_summary || {};
+      const total = summary.total_unidades || DATA.stock_items.length;
+      const reservadas = DATA.pre_delivery ? DATA.pre_delivery.length : DATA.stock_items.filter(i => i.reservada).length;
+      const enTaller = summary.en_taller || DATA.stock_items.filter(i => i.is_taller).length;
+      const disponibles = summary.disponibles || DATA.stock_items.filter(i => !i.reservada && !i.is_taller).length;
+      const conFoto = summary.con_foto || DATA.stock_items.filter(i => i.tiene_foto).length;
+      const sinFoto = summary.sin_foto || DATA.stock_items.filter(i => !i.tiene_foto).length;
+
+      const enTallerEnPreEntrega = (DATA.pre_delivery || []).filter(i => i.is_taller).length;
+
+      // Executive Cards
+      setElText('kpi-predelivery-badge', `${reservadas} un.`);
+      setElText('kpi-predelivery-count', reservadas);
+      setElHtml('kpi-predelivery-desc', enTallerEnPreEntrega > 0 
+        ? `Alistamiento final. <strong class="text-rose-600 font-bold">${enTallerEnPreEntrega} auto${enTallerEnPreEntrega > 1 ? 's' : ''} aún en taller</strong>.` 
+        : 'Alistamiento final. Todas en salón listas.');
+
+      setElText('kpi-taller-badge', `${enTaller} un.`);
+      setElText('kpi-taller-count', enTaller);
+      setElText('kpi-taller-pct', `${summary.en_taller_pct || ((enTaller / total) * 100).toFixed(1)}% del stock`);
+      setElHtml('kpi-taller-days', `Permanencia media: <strong class="text-stone-800">${Math.round(summary.dias_taller_promedio || 0)} d.</strong>`);
+
+      setElText('kpi-sinfoto-badge', `${sinFoto} un.`);
+      setElText('kpi-sinfoto-count', sinFoto);
+      setElText('kpi-sinfoto-pct', `${summary.sin_foto_pct || ((sinFoto / total) * 100).toFixed(1)}% sin publicar`);
+      setElHtml('kpi-confoto-sub', `Con Foto: <strong class="text-emerald-700">${conFoto} (${summary.con_foto_pct || Math.round((conFoto / total) * 100)}%)</strong>`);
+
+      setElText('kpi-disponibles-badge', `${disponibles} un.`);
+      setElText('kpi-disponibles-count', disponibles);
+      setElText('kpi-disponibles-pct', `${summary.disponibles_pct || ((disponibles / total) * 100).toFixed(1)}% del parque`);
+      const locationsCount = DATA.locations ? DATA.locations.filter(l => !l.is_taller).length : 7;
+      setElText('kpi-disponibles-sub', `En ${locationsCount} sucursales`);
+
+      // Dock & Mobile Labels
+      setElText('dock-label-stock', `Inventario (${total})`);
+      setElText('dock-label-taller', `Talleres (${enTaller})`);
+      setElText('dock-label-fotos', `Fotos (${sinFoto} pend.)`);
+      setElText('dock-label-entrega', `Pre-Entrega (${reservadas})`);
+
+      setElText('mob-label-stock', `Stock (${total})`);
+      setElText('mob-label-taller', `Taller (${enTaller})`);
+      setElText('mob-label-fotos', `Fotos (${sinFoto})`);
+      setElText('mob-label-entrega', `Entrega (${reservadas})`);
+
+      // Re-populate & re-render all views
+      try { updateAgingBars(); } catch(e) { console.error('updateAgingBars error:', e); }
+      try { populateDropdownFilters(); } catch(e) { console.error('populateDropdownFilters error:', e); }
+      try { applyFilters(); } catch(e) { console.error('applyFilters error:', e); }
+      try { renderPreDeliveryMini(); } catch(e) { console.error('renderPreDeliveryMini error:', e); }
+      try { renderTallerSummary(); } catch(e) { console.error('renderTallerSummary error:', e); }
+      try { renderWorkshopsGrid(); } catch(e) { console.error('renderWorkshopsGrid error:', e); }
+      try { renderPhotoPlan(); } catch(e) { console.error('renderPhotoPlan error:', e); }
+      try { renderPreDeliveryGrid(); } catch(e) { console.error('renderPreDeliveryGrid error:', e); }
+    }
+
+    function filterByLocationDirect(locationName) {
+      const selLoc = document.getElementById('filter-location');
+      if (selLoc) selLoc.value = locationName;
+      setStatusFilter('ALL');
+      setPhotoFilter('ALL');
+      switchTab('inventario');
+      applyFilters();
+    }
+
+    // Export Operational CSV
+    function exportOperationalCSV() {
+      let csv = 'Dominio,Marca,Modelo,Version,Anio,Color,Kilometros,Transmision,Combustible,Ubicacion,EnTaller,DiasStock,TieneFoto,CantidadFotos,Estado\n';
+      filteredStock.forEach(i => {
+        const estado = i.reservada ? 'Reservado' : (i.is_taller ? 'En Taller' : 'Disponible');
+        const tieneFoto = i.tiene_foto ? 'Con Foto' : 'Sin Foto';
+        const enTaller = i.is_taller ? 'SI' : 'NO';
+        csv += `"${i.dominio || '0KM'}","${i.marca}","${i.modelo}","${i.version || ''}",${i.anio},"${i.color || ''}",${i.kms || 0},"${i.trans || ''}","${i.combust || ''}","${i.ubicacion}","${enTaller}",${i.dias},"${tieneFoto}",${i.cantidad_fotos || 0},"${estado}"\n`;
+      });
+      downloadFile('planilla_alistamiento_madero.csv', csv, 'text/csv');
+    }
+
+    function downloadFile(filename, text, mime) {
+      const blob = new Blob([text], { type: mime });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // Lucy Live Sync Modal & Call
+    function openLucySyncModal() {
+      document.getElementById('lucy-sync-modal').classList.remove('hidden');
+    }
+    function closeLucySyncModal() {
+      document.getElementById('lucy-sync-modal').classList.add('hidden');
+    }
+
+    async function triggerLucyLiveSync() {
+      const btn = document.getElementById('btn-force-sync');
+      const feedback = document.getElementById('sync-feedback');
+      btn.disabled = true;
+      btn.innerText = 'Consultando Lucy...';
+      feedback.classList.remove('hidden');
+      feedback.className = 'text-xs p-3 rounded-xl mb-4 font-mono bg-blue-50 text-blue-900 border border-blue-200';
+      feedback.innerText = 'Enviando petición a /api/sync-lucy?force=true...';
+
+      try {
+        const res = await fetch('/api/sync-lucy?force=true');
+        const json = await res.json();
+        
+        if (json.ok && json.data) {
+          updateAllViews(json.data);
+          feedback.className = 'text-xs p-3 rounded-xl mb-4 font-mono bg-emerald-50 text-emerald-900 border border-emerald-200';
+          feedback.innerText = `Sincronización operativa exitosa (${json.source}). ${json.data.stock_items.length} unidades actualizadas. Cuota restante: ${json.quota?.remaining !== undefined ? json.quota.remaining : 31} llamadas hoy.`;
+          
+          const statusBadge = document.getElementById('header-lucy-status');
+          if (statusBadge) {
+            statusBadge.innerText = json.source === 'lucy_live' ? 'En Vivo (Sincronizado)' : 'Snapshot Operacional';
+          }
+        } else {
+          feedback.className = 'text-xs p-3 rounded-xl mb-4 font-mono bg-amber-50 text-amber-900 border border-amber-200';
+          feedback.innerText = `Aviso: ${json.message || 'No se pudieron obtener datos nuevos.'}`;
+        }
+      } catch (e) {
+        feedback.className = 'text-xs p-3 rounded-xl mb-4 font-mono bg-rose-50 text-rose-900 border border-rose-200';
+        feedback.innerText = 'No se pudo conectar con el endpoint de sincronización: ' + e.message;
+      } finally {
+        btn.disabled = false;
+        btn.innerText = 'Actualizar Stock Ahora';
+      }
+    }
+
+    async function silentBackgroundSync() {
+      try {
+        const res = await fetch('/api/sync-lucy');
+        if (res.ok) {
+          const json = await res.json();
+          if (json.ok && json.data) {
+            updateAllViews(json.data);
+            const statusBadge = document.getElementById('header-lucy-status');
+            if (statusBadge) {
+              statusBadge.innerText = json.source === 'lucy_live' ? 'Conectado (Live)' : 'Snapshot';
+            }
+          }
+        }
+      } catch (e) {
+        console.log('Background sync bypassed, running on local snapshot.');
+      }
+    }
+
+    // INITIALIZATION (Defensive execution)
+    window.addEventListener('DOMContentLoaded', () => {
+      updateAllViews();
+      silentBackgroundSync();
+    });
+  </script>
+</body>
+</html>
