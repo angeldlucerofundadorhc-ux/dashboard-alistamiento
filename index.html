@@ -21,54 +21,88 @@
             brand: {
               black: '#0E0E0E',
               ink: '#15110C',
-              bg: '#EBE4DC',
-              surface: '#FBF9F4',
+              bg: '#F4EFE6',
+              surface: '#FFFFFF',
               muted: '#6B6257',
               orange: '#FF5A1F',
-              orangeInk: '#DE4800',
+              orangeHover: '#E04810',
+              orangeInk: '#FF5A1F',
             }
           }
         }
       }
     }
   </script>
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('madero_theme') === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
 
   <style>
-    /* Apple / visionOS Light Glassmorphism Cálido · Regla 60-30-10 Madero Automotores */
+    /* Apple / visionOS Light & Dark Glassmorphism · Regla 60-30-10 Madero Automotores */
     :root {
-      --bg: #ebe4dc;
-      --surface: rgba(255, 255, 255, 0.82);
-      --surface-solid: #fbf9f4;
-      --surface-2: rgba(236, 231, 220, 0.72);
+      --bg: #f4efe6;
+      --surface: rgba(255, 255, 255, 0.92);
+      --surface-solid: #ffffff;
+      --surface-2: rgba(244, 239, 230, 0.85);
       --fg: #0e0e0e;
       --fg-ink: #15110c;
       --muted: #6b6257;
-      --line: rgba(28, 25, 23, 0.09);
-      --glass-border: rgba(255, 255, 255, 0.90);
+      --line: rgba(28, 25, 23, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.96);
       --ink: #0e0e0e;
-      --accent: #ff5a1f;
-      --accent-ink: #de4800;
+      --accent: #FF5A1F;
+      --accent-ink: #FF5A1F;
+      --accent-hover: #E04810;
       --accent-fg: #ffffff;
       --stock: #157347;   --stock-bg: rgba(22, 163, 74, 0.12);
       --barco: #92400e;   --barco-bg: rgba(245, 158, 11, 0.15);
       --prod: #1d4ed8;    --prod-bg: rgba(59, 130, 246, 0.13);
       --venc: #b42318;    --venc-bg: rgba(239, 68, 68, 0.13);
-      --shadow: 0 14px 40px -10px rgba(45, 35, 25, 0.10), 0 2px 6px rgba(0, 0, 0, 0.03), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+      --shadow: 0 12px 34px -12px rgba(45, 35, 25, 0.08), 0 2px 6px rgba(0, 0, 0, 0.025), inset 0 1px 1px rgba(255, 255, 255, 0.95);
       --display: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", system-ui, sans-serif;
       --body: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, sans-serif;
       --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
       color-scheme: light;
     }
 
+    html[data-theme="dark"] {
+      --bg: #0e0e0e;
+      --surface: rgba(22, 22, 22, 0.90);
+      --surface-solid: #161616;
+      --surface-2: rgba(34, 34, 34, 0.85);
+      --fg: #ffffff;
+      --fg-ink: #f5f5f4;
+      --muted: #a8a29e;
+      --line: rgba(255, 255, 255, 0.09);
+      --glass-border: rgba(255, 255, 255, 0.10);
+      --ink: #ffffff;
+      --accent: #FF5A1F;
+      --accent-ink: #FF5A1F;
+      --accent-hover: #E04810;
+      --accent-fg: #ffffff;
+      --stock: #34d399;   --stock-bg: rgba(16, 185, 129, 0.16);
+      --barco: #fbbf24;   --barco-bg: rgba(245, 158, 11, 0.16);
+      --prod: #60a5fa;    --prod-bg: rgba(59, 130, 246, 0.16);
+      --venc: #f87171;    --venc-bg: rgba(239, 68, 68, 0.16);
+      --shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.72), 0 1px 2px rgba(255, 255, 255, 0.03);
+      color-scheme: dark;
+    }
+
     * { box-sizing: border-box; }
     html, body { margin: 0; }
     body {
-      background-color: #ebe4dc;
+      background-color: var(--bg);
       background-image:
-        radial-gradient(circle at 12% 18%, rgba(255, 252, 248, 0.96) 0%, transparent 45%),
-        radial-gradient(circle at 88% 12%, rgba(235, 224, 211, 0.85) 0%, transparent 42%),
-        radial-gradient(circle at 50% 48%, rgba(247, 242, 236, 0.78) 0%, transparent 55%),
-        radial-gradient(circle at 82% 88%, rgba(224, 211, 197, 0.85) 0%, transparent 50%);
+        radial-gradient(circle at 12% 18%, rgba(250, 248, 245, 0.98) 0%, transparent 48%),
+        radial-gradient(circle at 88% 12%, rgba(244, 239, 230, 0.90) 0%, transparent 45%),
+        radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.88) 0%, transparent 58%),
+        radial-gradient(circle at 82% 88%, rgba(236, 229, 218, 0.88) 0%, transparent 50%);
       background-attachment: fixed;
       color: var(--fg);
       font-family: var(--body);
@@ -77,6 +111,14 @@
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
       overflow-x: hidden;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    html[data-theme="dark"] body {
+      background-color: #0E0E0E;
+      background-image:
+        radial-gradient(circle at 18% 15%, rgba(255, 90, 31, 0.08) 0%, transparent 42%),
+        radial-gradient(circle at 85% 85%, rgba(255, 255, 255, 0.04) 0%, transparent 48%),
+        linear-gradient(180deg, #141414 0%, #0E0E0E 100%);
     }
     body::before {
       content: "";
@@ -84,9 +126,12 @@
       inset: 0 0 auto;
       height: env(safe-area-inset-top, 0px);
       z-index: 35;
-      background: rgba(255, 255, 255, 0.82);
+      background: rgba(255, 255, 255, 0.90);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
+    }
+    html[data-theme="dark"] body::before {
+      background: rgba(14, 14, 14, 0.90);
     }
 
     .font-mono, .mono { font-family: var(--mono); }
@@ -382,8 +427,8 @@
     .kpi-card:active { transform: scale(0.98); }
     .kpi-card.is-on {
       border-color: var(--accent);
-      background: rgba(255, 255, 255, 0.96);
-      box-shadow: 0 10px 26px -10px rgba(222, 72, 0, 0.25);
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 10px 26px -10px rgba(255, 90, 31, 0.28);
     }
     .kpi-card .klbl {
       font-size: 11px;
@@ -424,7 +469,7 @@
       justify-content: center;
       gap: 7px;
       border: 1px solid rgba(28, 25, 23, 0.11);
-      background: rgba(255, 255, 255, 0.86);
+      background: rgba(255, 255, 255, 0.92);
       color: var(--fg);
       padding: 8px 15px;
       border-radius: 999px;
@@ -442,9 +487,9 @@
       background: var(--accent);
       border-color: var(--accent);
       color: var(--accent-fg);
-      box-shadow: 0 6px 16px -4px rgba(222, 72, 0, 0.42);
+      box-shadow: 0 6px 16px -4px rgba(255, 90, 31, 0.42);
     }
-    .btn.primary:hover { background: var(--accent-ink); border-color: var(--accent-ink); }
+    .btn.primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
     .btn.dark {
       background: #0e0e0e;
       border-color: #0e0e0e;
@@ -455,16 +500,16 @@
     .btn.ghost {
       background: transparent;
       border-color: transparent;
-      color: var(--accent-ink);
+      color: var(--accent);
       padding-inline: 10px;
       box-shadow: none;
     }
-    .btn.ghost:hover { background: rgba(222, 72, 0, 0.08); }
+    .btn.ghost:hover { background: rgba(255, 90, 31, 0.10); }
     .btn.sm { padding: 6px 12px; font-size: 12px; }
     .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
 
     .input {
-      background: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.94);
       border: 1px solid rgba(28, 25, 23, 0.11);
       border-radius: 12px;
       padding: 8px 12px;
@@ -484,7 +529,7 @@
     }
 
     .filters {
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(28px) saturate(190%);
       -webkit-backdrop-filter: blur(28px) saturate(190%);
       border: 1px solid var(--glass-border);
@@ -549,7 +594,7 @@
     .fam-pill {
       flex-shrink: 0;
       border: 1px solid rgba(28, 25, 23, 0.09);
-      background: rgba(255, 255, 255, 0.74);
+      background: rgba(255, 255, 255, 0.85);
       color: var(--muted);
       border-radius: 999px;
       padding: 6px 12px;
@@ -568,7 +613,7 @@
       box-shadow: 0 2px 8px rgba(14, 14, 14, 0.18);
     }
 
-    /* ---------- Pastel Readable Badges (Light Mode) ---------- */
+    /* ---------- Pastel Readable Badges (Light & Dark) ---------- */
     .badge-pill {
       display: inline-flex;
       align-items: center;
@@ -603,11 +648,11 @@
     }
     .badge-orange {
       background: rgba(255, 90, 31, 0.12);
-      color: #de4800;
-      border: 1px solid rgba(255, 90, 31, 0.25);
+      color: #FF5A1F;
+      border: 1px solid rgba(255, 90, 31, 0.28);
     }
     .badge-neutral {
-      background: rgba(236, 231, 220, 0.80);
+      background: rgba(236, 231, 220, 0.85);
       color: #6b6257;
       border: 1px solid rgba(28, 25, 23, 0.09);
     }
@@ -620,12 +665,19 @@
       font-family: var(--mono);
       font-size: 10.5px;
       font-weight: 600;
-      color: var(--accent-ink);
-      background: rgba(222, 72, 0, 0.09);
-      border: 1px solid rgba(222, 72, 0, 0.24);
+      color: var(--accent);
+      background: rgba(255, 90, 31, 0.10);
+      border: 1px solid rgba(255, 90, 31, 0.26);
       border-radius: 999px;
       padding: 2px 9px;
       white-space: nowrap;
+    }
+
+    /* Chapa patente siempre blanca de alto contraste */
+    .plate-badge {
+      background: #FFFFFF !important;
+      color: #0E0E0E !important;
+      border: 1px solid rgba(14, 14, 14, 0.18) !important;
     }
 
     /* ---------- Table Box ---------- */
@@ -678,10 +730,10 @@
       -webkit-backdrop-filter: blur(8px);
     }
     .modal-card {
-      background: rgba(251, 249, 244, 0.95);
+      background: rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(36px) saturate(200%);
       -webkit-backdrop-filter: blur(36px) saturate(200%);
-      border: 1px solid rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.98);
       border-radius: 24px;
       color: var(--fg);
       box-shadow: 0 25px 60px -15px rgba(21, 17, 12, 0.30);
@@ -701,6 +753,245 @@
       transition: background 0.15s, color 0.15s;
     }
     .modal-close:hover { background: rgba(28, 25, 23, 0.12); color: var(--fg); }
+
+    /* ---------- Theme Toggle Button ---------- */
+    .theme-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.90);
+      border: 1px solid rgba(28, 25, 23, 0.10);
+      color: var(--fg);
+      padding: 6px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(21, 17, 12, 0.04);
+      transition: transform 0.15s, background 0.15s, border-color 0.15s, color 0.15s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .theme-toggle-btn:hover { background: #ffffff; border-color: rgba(255, 90, 31, 0.45); }
+    .theme-toggle-btn:active { transform: scale(0.97); }
+    .theme-toggle-btn #theme-toggle-icon {
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+    }
+    @media (max-width: 520px) {
+      .theme-toggle-btn { padding: 6px 8px; }
+      #theme-toggle-label { display: none; }
+    }
+
+    /* ---------- Dark Mode Overrides (60% #0E0E0E, 30% #FFFFFF, 10% #FF5A1F) ---------- */
+    html[data-theme="dark"] ::-webkit-scrollbar-track { background: #0E0E0E; }
+    html[data-theme="dark"] ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.18); }
+    html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover { background: #FF5A1F; }
+
+    html[data-theme="dark"] .topbar {
+      background: rgba(14, 14, 14, 0.86);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+      color: #FFFFFF;
+    }
+    html[data-theme="dark"] .logo-mark {
+      background: #FF5A1F;
+      color: #FFFFFF;
+      box-shadow: 0 6px 16px -4px rgba(255, 90, 31, 0.45);
+    }
+    html[data-theme="dark"] nav.tabs {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.10);
+    }
+    html[data-theme="dark"] nav.tabs .tab-btn:hover {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.09);
+    }
+    html[data-theme="dark"] nav.tabs .tab-btn.tab-btn-active {
+      background: #FF5A1F;
+      color: #FFFFFF;
+      box-shadow: 0 4px 16px -2px rgba(255, 90, 31, 0.50);
+    }
+    html[data-theme="dark"] .userchip,
+    html[data-theme="dark"] .theme-toggle-btn {
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(255, 255, 255, 0.12);
+      color: #FFFFFF;
+      box-shadow: none;
+    }
+    html[data-theme="dark"] .userchip:hover,
+    html[data-theme="dark"] .theme-toggle-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 90, 31, 0.45);
+    }
+
+    @media (max-width: 759.98px) {
+      html[data-theme="dark"] .mobile-dock {
+        background: rgba(18, 18, 18, 0.90);
+        border-color: rgba(255, 255, 255, 0.12);
+        box-shadow: 0 18px 48px -8px rgba(0, 0, 0, 0.85);
+      }
+      html[data-theme="dark"] .mobile-dock .mob-btn.tab-btn-active {
+        background: #FF5A1F;
+        color: #FFFFFF;
+        box-shadow: 0 4px 16px -2px rgba(255, 90, 31, 0.50);
+      }
+    }
+
+    html[data-theme="dark"] .subpanel {
+      background: rgba(28, 28, 28, 0.82);
+      border-color: rgba(255, 255, 255, 0.09);
+    }
+    html[data-theme="dark"] .subpanel:hover {
+      background: rgba(34, 34, 34, 0.94);
+      border-color: rgba(255, 90, 31, 0.35);
+    }
+    html[data-theme="dark"] .kpi-card {
+      background: rgba(22, 22, 22, 0.90);
+      border-color: rgba(255, 255, 255, 0.09);
+      box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.72);
+    }
+    html[data-theme="dark"] .kpi-card:hover {
+      background: rgba(28, 28, 28, 0.96);
+      border-color: rgba(255, 90, 31, 0.45);
+    }
+    html[data-theme="dark"] .kpi-card.is-on {
+      background: rgba(30, 30, 30, 0.98);
+      border-color: #FF5A1F;
+      box-shadow: 0 10px 26px -10px rgba(255, 90, 31, 0.35);
+    }
+    html[data-theme="dark"] .filters {
+      background: rgba(22, 22, 22, 0.90);
+      border-color: rgba(255, 255, 255, 0.09);
+    }
+    html[data-theme="dark"] .seg {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.10);
+    }
+    html[data-theme="dark"] .seg-btn:hover { color: #FFFFFF; }
+    html[data-theme="dark"] .seg-btn.is-active {
+      background: #FF5A1F;
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px -2px rgba(255, 90, 31, 0.45);
+    }
+    html[data-theme="dark"] .fam-pill {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.10);
+      color: #d6d3d1;
+    }
+    html[data-theme="dark"] .fam-pill:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #FFFFFF;
+    }
+    html[data-theme="dark"] .fam-pill.active {
+      background: #FF5A1F;
+      border-color: #FF5A1F;
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px -2px rgba(255, 90, 31, 0.45);
+    }
+    html[data-theme="dark"] .input {
+      background: #1A1A1A;
+      border-color: rgba(255, 255, 255, 0.13);
+      color: #FFFFFF;
+    }
+    html[data-theme="dark"] .input::placeholder { color: #78716c; }
+    html[data-theme="dark"] .input:focus {
+      background: #202020;
+      border-color: #FF5A1F;
+    }
+    html[data-theme="dark"] .input option {
+      background: #161616;
+      color: #FFFFFF;
+    }
+    html[data-theme="dark"] .btn {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.13);
+      color: #FFFFFF;
+      box-shadow: none;
+    }
+    html[data-theme="dark"] .btn:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 90, 31, 0.45);
+    }
+    html[data-theme="dark"] .btn.primary {
+      background: #FF5A1F;
+      border-color: #FF5A1F;
+      color: #FFFFFF;
+    }
+    html[data-theme="dark"] .btn.primary:hover {
+      background: #E04810;
+      border-color: #E04810;
+    }
+    html[data-theme="dark"] .btn.dark {
+      background: #FF5A1F;
+      border-color: #FF5A1F;
+      color: #FFFFFF;
+    }
+    html[data-theme="dark"] .btn.dark:hover {
+      background: #E04810;
+      border-color: #E04810;
+    }
+    html[data-theme="dark"] .btn.ghost {
+      background: transparent;
+      border-color: transparent;
+      color: #FF5A1F;
+    }
+    html[data-theme="dark"] .btn.ghost:hover {
+      background: rgba(255, 90, 31, 0.14);
+    }
+    html[data-theme="dark"] .tablebox th {
+      background: rgba(255, 255, 255, 0.03);
+    }
+    html[data-theme="dark"] .tablebox th.sortable:hover {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.06);
+    }
+    html[data-theme="dark"] .tablebox tbody tr:hover > td {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    html[data-theme="dark"] .modal-backdrop {
+      background: rgba(0, 0, 0, 0.72);
+    }
+    html[data-theme="dark"] .modal-card {
+      background: rgba(22, 22, 22, 0.96);
+      border-color: rgba(255, 255, 255, 0.12);
+      color: #FFFFFF;
+    }
+    html[data-theme="dark"] .modal-close {
+      background: rgba(255, 255, 255, 0.08);
+      color: #a8a29e;
+    }
+    html[data-theme="dark"] .modal-close:hover {
+      background: rgba(255, 255, 255, 0.16);
+      color: #FFFFFF;
+    }
+    html[data-theme="dark"] .badge-emerald { color: #34d399; background: rgba(16, 185, 129, 0.16); border-color: rgba(16, 185, 129, 0.32); }
+    html[data-theme="dark"] .badge-amber { color: #fbbf24; background: rgba(245, 158, 11, 0.16); border-color: rgba(245, 158, 11, 0.32); }
+    html[data-theme="dark"] .badge-blue { color: #60a5fa; background: rgba(59, 130, 246, 0.16); border-color: rgba(59, 130, 246, 0.32); }
+    html[data-theme="dark"] .badge-red { color: #f87171; background: rgba(239, 68, 68, 0.16); border-color: rgba(239, 68, 68, 0.32); }
+    html[data-theme="dark"] .badge-orange { color: #FF5A1F; background: rgba(255, 90, 31, 0.16); border-color: rgba(255, 90, 31, 0.35); }
+    html[data-theme="dark"] .badge-neutral { color: #d6d3d1; background: rgba(255, 255, 255, 0.09); border-color: rgba(255, 255, 255, 0.12); }
+
+    /* Dark Mode Utility Class Overrides */
+    html[data-theme="dark"] .text-\[\#0E0E0E\] { color: #FFFFFF !important; }
+    html[data-theme="dark"] .text-\[\#15110c\] { color: #F5F5F4 !important; }
+    html[data-theme="dark"] .text-\[\#6b6257\] { color: #A8A29E !important; }
+    html[data-theme="dark"] .text-\[\#157347\] { color: #34D399 !important; }
+    html[data-theme="dark"] .text-\[\#1d4ed8\] { color: #60A5FA !important; }
+    html[data-theme="dark"] .text-\[\#92400e\] { color: #FBBF24 !important; }
+    html[data-theme="dark"] .text-\[\#b42318\] { color: #F87171 !important; }
+    html[data-theme="dark"] .bg-white\/40 { background-color: rgba(255, 255, 255, 0.03) !important; }
+    html[data-theme="dark"] .bg-white\/45 { background-color: rgba(255, 255, 255, 0.04) !important; }
+    html[data-theme="dark"] .bg-white\/75 { background-color: rgba(255, 255, 255, 0.06) !important; }
+    html[data-theme="dark"] .bg-white\/80 { background-color: rgba(255, 255, 255, 0.07) !important; }
+    html[data-theme="dark"] .bg-white\/85 { background-color: rgba(255, 255, 255, 0.08) !important; }
+    html[data-theme="dark"] .bg-white { background-color: rgba(255, 255, 255, 0.08) !important; }
+    html[data-theme="dark"] .bg-\[\#fbf9f4\] { background-color: rgba(255, 255, 255, 0.05) !important; }
+    html[data-theme="dark"] .hover\:bg-white:hover { background-color: rgba(255, 255, 255, 0.12) !important; }
+    html[data-theme="dark"] .hover\:text-\[\#0E0E0E\]:hover { color: #FFFFFF !important; }
+    html[data-theme="dark"] [class*="border-[rgba(28,25,23"] { border-color: rgba(255, 255, 255, 0.10) !important; }
+    html[data-theme="dark"] .bg-\[\#0E0E0E\].text-white { background-color: #FF5A1F !important; border-color: #FF5A1F !important; color: #FFFFFF !important; }
+    html[data-theme="dark"] .plate-badge { background: #FFFFFF !important; color: #0E0E0E !important; border-color: #FFFFFF !important; }
   </style>
 </head>
 <body>
@@ -725,12 +1016,21 @@
         <button type="button" onclick="switchTab('entrega')" id="dock-btn-entrega" class="tab-btn"><span id="dock-label-entrega">Pre-Entrega (6)</span></button>
       </nav>
 
-      <!-- Lucy DMS Status Chip -->
-      <button type="button" class="userchip" onclick="openLucySyncModal()" aria-label="Estado y sincronización con Lucy DMS">
-        <span class="av" aria-hidden="true">L</span>
-        <span class="font-bold text-[13px] text-[#0E0E0E]">Lucy DMS</span>
-        <small id="header-lucy-status">Conectado (Live)</small>
-      </button>
+      <!-- Theme Toggle + Lucy DMS Status Chip -->
+      <div class="flex items-center gap-2 shrink-0">
+        <button type="button" id="theme-toggle-btn" onclick="toggleTheme()" class="theme-toggle-btn" aria-label="Cambiar tema visual" title="Cambiar entre modo Claro y Oscuro">
+          <span id="theme-toggle-icon" aria-hidden="true">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+          </span>
+          <span id="theme-toggle-label">Claro</span>
+        </button>
+
+        <button type="button" class="userchip" onclick="openLucySyncModal()" aria-label="Estado y sincronización con Lucy DMS">
+          <span class="av" aria-hidden="true">L</span>
+          <span class="font-bold text-[13px] text-[#0E0E0E]">Lucy DMS</span>
+          <small id="header-lucy-status">Conectado (Live)</small>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -750,8 +1050,8 @@
           <button type="button" id="quick-seg-inventario" onclick="switchTab('inventario')" class="seg-btn">Inventario</button>
         </div>
 
-        <button type="button" onclick="openLucySyncModal()" class="btn sm">
-          <svg class="w-3.5 h-3.5 text-[#DE4800]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+        <button type="button" onclick="openLucySyncModal()" class="btn primary sm">
+          <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
           <span>Sincronizar</span>
         </button>
       </div>
@@ -773,7 +1073,7 @@
         <span id="kpi-predelivery-desc" class="ksub">Alistamiento final. <strong class="text-[#b42318] font-bold">1 auto aún en taller</strong>.</span>
         <div class="mt-auto pt-2 border-t border-[rgba(28,25,23,0.08)] flex items-center justify-between w-full text-[11px] text-[#6b6257] font-medium">
           <span>Verificación y lavado</span>
-          <span class="text-[#DE4800] font-bold">Ver lista →</span>
+          <span class="text-[#FF5A1F] font-bold">Ver lista →</span>
         </div>
       </button>
 
@@ -790,7 +1090,7 @@
         <span id="kpi-taller-sub" class="ksub">Mecánica y chapa en talleres externos.</span>
         <div class="mt-auto pt-2 border-t border-[rgba(28,25,23,0.08)] flex items-center justify-between w-full text-[11px] text-[#6b6257] font-medium">
           <span id="kpi-taller-days">Permanencia media: <strong class="text-[#0E0E0E]">339 d.</strong></span>
-          <span class="text-[#DE4800] font-bold">Auditar →</span>
+          <span class="text-[#FF5A1F] font-bold">Auditar →</span>
         </div>
       </button>
 
@@ -807,7 +1107,7 @@
         <span class="ksub">Lavado estético y sesión para publicación web.</span>
         <div class="mt-auto pt-2 border-t border-[rgba(28,25,23,0.08)] flex items-center justify-between w-full text-[11px] text-[#6b6257] font-medium">
           <span id="kpi-confoto-sub">Con Foto: <strong class="text-[#157347]">97 (60%)</strong></span>
-          <span class="text-[#DE4800] font-bold">Plan fotos →</span>
+          <span class="text-[#FF5A1F] font-bold">Plan fotos →</span>
         </div>
       </button>
 
@@ -824,7 +1124,7 @@
         <span class="ksub">Disponibles para exhibición y prueba inmediata.</span>
         <div class="mt-auto pt-2 border-t border-[rgba(28,25,23,0.08)] flex items-center justify-between w-full text-[11px] text-[#6b6257] font-medium">
           <span id="kpi-disponibles-sub">En 8 sucursales</span>
-          <span class="text-[#DE4800] font-bold">Ver stock →</span>
+          <span class="text-[#FF5A1F] font-bold">Ver stock →</span>
         </div>
       </button>
 
@@ -846,7 +1146,7 @@
             </div>
             <div class="flex items-center gap-2">
               <span id="flujo-predelivery-badge" class="badge-pill badge-blue font-bold">6 autos</span>
-              <button type="button" onclick="switchTab('entrega')" class="text-xs font-bold text-[#DE4800] hover:underline">Checklist →</button>
+              <button type="button" onclick="switchTab('entrega')" class="text-xs font-bold text-[#FF5A1F] hover:underline">Checklist →</button>
             </div>
           </div>
 
@@ -1038,7 +1338,7 @@
         <div class="mb-5 p-4 rounded-2xl bg-white/75 border border-[rgba(28,25,23,0.09)]">
           <div class="flex justify-between text-xs mb-2 font-medium">
             <span id="photo-tab-confoto-label" class="text-[#157347]">Con Foto en Lucy: <strong>97 autos</strong></span>
-            <span id="photo-tab-sinfoto-label" class="text-[#DE4800] font-semibold">Pendientes: <strong>66 autos</strong></span>
+            <span id="photo-tab-sinfoto-label" class="text-[#FF5A1F] font-semibold">Pendientes: <strong>66 autos</strong></span>
           </div>
           <div class="w-full h-3 rounded-full bg-[rgba(28,25,23,0.08)] overflow-hidden flex">
             <div id="photo-progress-con" class="h-full bg-[#16a34a] transition-all duration-300" style="width: 59.5%"></div>
@@ -1519,7 +1819,7 @@
               <span class="text-[10.5px] text-[#6b6257] font-mono truncate max-w-[200px] block">${version}</span>
             </td>
             <td class="py-2.5 px-2.5">
-              <span class="bg-[#fbf9f4] text-[#0E0E0E] border border-stone-300 font-mono font-bold px-2 py-0.5 rounded-md inline-block text-xs">${dominio}</span>
+              <span class="plate-badge font-mono font-bold px-2 py-0.5 rounded-md inline-block text-xs">${dominio}</span>
             </td>
             <td class="py-2.5 px-2.5 text-[#15110c] font-semibold">${anio}</td>
             <td class="py-2.5 px-2.5 text-[#6b6257]">${color}</td>
@@ -1575,7 +1875,7 @@
 
         div.innerHTML = `
           <div class="flex items-center gap-3 min-w-0">
-            <span class="bg-[#fbf9f4] text-[#0E0E0E] border border-stone-300 font-mono font-bold px-2 py-0.5 rounded-md text-xs sm:text-sm shrink-0">${escapeHtml(item.dominio || '0KM')}</span>
+            <span class="plate-badge font-mono font-bold px-2 py-0.5 rounded-md text-xs sm:text-sm shrink-0">${escapeHtml(item.dominio || '0KM')}</span>
             <div class="min-w-0">
               <span class="font-bold text-[#0E0E0E] block text-xs sm:text-sm truncate">${escapeHtml(item.marca)} ${escapeHtml(item.modelo)} (${escapeHtml(item.anio)})</span>
               <span class="text-[11px] text-[#6b6257] block truncate">${escapeHtml(item.color || '-')} · ${escapeHtml(kmsTxt)} km · ${escapeHtml(item.ubicacion || '-')}</span>
@@ -1610,7 +1910,7 @@
           </div>
           <div class="mt-2.5 pt-2 border-t border-[rgba(28,25,23,0.08)] flex items-center justify-between text-[11px] text-[#6b6257]">
             <span>Fotos: ${escapeHtml(t.con_foto)} con / ${escapeHtml(t.sin_foto)} sin</span>
-            <button type="button" data-filter-location="${escapeHtml(t.nombre)}" class="text-[#DE4800] font-bold hover:underline bg-transparent border-0 p-0 cursor-pointer">Filtrar →</button>
+            <button type="button" data-filter-location="${escapeHtml(t.nombre)}" class="text-[#FF5A1F] font-bold hover:underline bg-transparent border-0 p-0 cursor-pointer">Filtrar →</button>
           </div>
         `;
         container.appendChild(div);
@@ -1635,7 +1935,7 @@
           unitsHtml += `
             <div class="flex items-center justify-between py-2 border-b border-[rgba(28,25,23,0.07)] last:border-0 text-xs gap-2">
               <div class="truncate min-w-0">
-                <span class="bg-[#fbf9f4] text-[#0E0E0E] border border-stone-300 font-mono font-bold px-1.5 py-0.5 rounded-md text-[11px] mr-1.5">${escapeHtml(u.dominio || '0KM')}</span>
+                <span class="plate-badge font-mono font-bold px-1.5 py-0.5 rounded-md text-[11px] mr-1.5">${escapeHtml(u.dominio || '0KM')}</span>
                 <span class="text-[#15110c] font-medium">${escapeHtml(u.marca)} ${escapeHtml(u.modelo)}</span>
               </div>
               <span class="badge-pill ${dias > 180 ? 'badge-red' : 'badge-amber'} text-[10.5px] shrink-0 font-mono">${escapeHtml(dias)} d.</span>
@@ -1789,9 +2089,9 @@
         info.pending.forEach(u => {
           const kmsTxt = Math.round(u.kms || 0).toLocaleString('es-AR');
           rowsPendingHtml += `
-            <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#fbf9f4] hover:bg-white border border-[rgba(222,72,0,0.22)] transition gap-2">
+            <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#fbf9f4] hover:bg-white border border-[rgba(255,90,31,0.28)] transition gap-2">
               <div class="flex items-center gap-2 min-w-0">
-                <span class="bg-white text-[#0E0E0E] border border-stone-300 font-mono text-[11px] font-bold px-2 py-0.5 rounded-md shrink-0">${escapeHtml(u.dominio || '0KM')}</span>
+                <span class="plate-badge font-mono text-[11px] font-bold px-2 py-0.5 rounded-md shrink-0">${escapeHtml(u.dominio || '0KM')}</span>
                 <div class="min-w-0">
                   <span class="font-bold text-[#0E0E0E] text-xs block truncate">${escapeHtml(u.marca)} ${escapeHtml(u.modelo)} (${escapeHtml(u.anio)})</span>
                   <span class="text-[10.5px] text-[#6b6257] block truncate">${escapeHtml(u.color || 'Color n/d')} · ${escapeHtml(kmsTxt)} km · <span class="font-semibold text-[#0E0E0E]">${escapeHtml(u.dias)}d stock</span></span>
@@ -1815,7 +2115,7 @@
           rowsCompletedHtml += `
             <div class="flex items-center justify-between p-2.5 rounded-xl bg-white/80 hover:bg-white border border-[rgba(22,163,74,0.20)] transition gap-2">
               <div class="flex items-center gap-2 min-w-0">
-                <span class="bg-[#fbf9f4] text-[#0E0E0E] border border-stone-300 font-mono text-[11px] font-bold px-2 py-0.5 rounded-md shrink-0">${escapeHtml(u.dominio || '0KM')}</span>
+                <span class="plate-badge font-mono text-[11px] font-bold px-2 py-0.5 rounded-md shrink-0">${escapeHtml(u.dominio || '0KM')}</span>
                 <div class="min-w-0">
                   <span class="font-bold text-[#0E0E0E] text-xs block truncate">${escapeHtml(u.marca)} ${escapeHtml(u.modelo)} (${escapeHtml(u.anio)})</span>
                   <span class="text-[10.5px] text-[#6b6257] block truncate">${escapeHtml(u.color || 'Color n/d')} · ${escapeHtml(kmsTxt)} km · <span class="text-[#157347] font-semibold">${escapeHtml(cant)} fotos en Lucy</span></span>
@@ -1842,7 +2142,7 @@
               ${isPolonia ? '<span class="hidden sm:inline-block badge-pill badge-blue text-[10px] font-semibold">Salón Principal</span>' : ''}
             </div>
             <div class="flex items-center gap-2 self-end sm:self-auto shrink-0">
-              <button type="button" data-filter-location="${escapeHtml(loc)}" class="text-xs text-[#DE4800] hover:underline font-bold flex items-center gap-1 bg-transparent border-0 p-0 cursor-pointer">
+              <button type="button" data-filter-location="${escapeHtml(loc)}" class="text-xs text-[#FF5A1F] hover:underline font-bold flex items-center gap-1 bg-transparent border-0 p-0 cursor-pointer">
                 <span>Ver Stock (${escapeHtml(info.total)})</span>
                 <span>→</span>
               </button>
@@ -1946,7 +2246,7 @@
         card.innerHTML = `
           <div>
             <div class="flex items-center justify-between mb-2.5 gap-2">
-              <span class="bg-[#fbf9f4] text-[#0E0E0E] border border-stone-300 font-mono text-sm font-bold px-2.5 py-0.5 rounded-md">${escapeHtml(u.dominio || '0KM')}</span>
+              <span class="plate-badge font-mono text-sm font-bold px-2.5 py-0.5 rounded-md">${escapeHtml(u.dominio || '0KM')}</span>
               <div class="flex items-center gap-1.5 flex-wrap justify-end">
                 ${statusBadge}
                 <span class="badge-pill badge-blue font-bold">RESERVADO</span>
@@ -1961,7 +2261,7 @@
             <div class="space-y-2 mb-4">
               <div class="flex items-center justify-between mb-1">
                 <h4 class="font-mono text-[10.5px] font-bold text-[#6b6257] uppercase tracking-wider">Checklist de Alistamiento</h4>
-                <button type="button" data-reset-dom="${escapeHtml(dom)}" class="text-[11px] text-[#6b6257] hover:text-[#DE4800] underline bg-transparent border-0 p-0 cursor-pointer">Reiniciar</button>
+                <button type="button" data-reset-dom="${escapeHtml(dom)}" class="text-[11px] text-[#6b6257] hover:text-[#FF5A1F] underline bg-transparent border-0 p-0 cursor-pointer">Reiniciar</button>
               </div>
               ${checksHtml}
             </div>
@@ -1969,7 +2269,7 @@
 
           <div class="pt-3 border-t border-[rgba(28,25,23,0.08)] flex justify-between items-center text-xs text-[#6b6257]">
             <span>Permanencia: <strong class="text-[#0E0E0E]">${escapeHtml(u.dias)} días</strong></span>
-            <button type="button" data-filter-location="${escapeHtml(u.ubicacion || '')}" class="text-[#DE4800] font-bold hover:underline bg-transparent border-0 p-0 cursor-pointer">Ver en Inventario →</button>
+            <button type="button" data-filter-location="${escapeHtml(u.ubicacion || '')}" class="text-[#FF5A1F] font-bold hover:underline bg-transparent border-0 p-0 cursor-pointer">Ver en Inventario →</button>
           </div>
         `;
         container.appendChild(card);
@@ -2008,7 +2308,7 @@
         { label: '0 - 30 días (Fresco)', filter: i => i.dias <= 30, colorText: 'text-[#157347]', colorBar: 'bg-[#16a34a]' },
         { label: '31 - 90 días (Normal)', filter: i => i.dias > 30 && i.dias <= 90, colorText: 'text-[#1d4ed8]', colorBar: 'bg-[#3b82f6]' },
         { label: '91 - 180 días (Alerta)', filter: i => i.dias > 90 && i.dias <= 180, colorText: 'text-[#92400e]', colorBar: 'bg-[#f59e0b]' },
-        { label: '181 - 365 días (Crítico)', filter: i => i.dias > 180 && i.dias <= 365, colorText: 'text-[#DE4800]', colorBar: 'bg-[#ff5a1f]' },
+        { label: '181 - 365 días (Crítico)', filter: i => i.dias > 180 && i.dias <= 365, colorText: 'text-[#FF5A1F]', colorBar: 'bg-[#ff5a1f]' },
         { label: '+365 días (Inmovilizado)', filter: i => i.dias > 365, colorText: 'text-[#b42318]', colorBar: 'bg-[#ef4444]' }
       ];
 
@@ -2258,6 +2558,39 @@
       }
     }
 
+    // Theme Toggle (Claro / Oscuro)
+    function applyTheme(theme) {
+      const isDark = theme === 'dark';
+      if (isDark) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+      try {
+        localStorage.setItem('madero_theme', isDark ? 'dark' : 'light');
+      } catch (e) {}
+
+      const iconEl = document.getElementById('theme-toggle-icon');
+      const labelEl = document.getElementById('theme-toggle-label');
+      const btnEl = document.getElementById('theme-toggle-btn');
+      if (iconEl) {
+        iconEl.innerHTML = isDark
+          ? '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>'
+          : '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>';
+      }
+      if (labelEl) {
+        labelEl.textContent = isDark ? 'Oscuro' : 'Claro';
+      }
+      if (btnEl) {
+        btnEl.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+      }
+    }
+
+    function toggleTheme() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      applyTheme(isDark ? 'light' : 'dark');
+    }
+
     // Delegated Event Handlers (XSS-safe attribute dispatch)
     function bindDelegatedHandlers() {
       const brandPills = document.getElementById('brand-pills');
@@ -2345,6 +2678,9 @@
 
     // INITIALIZATION (Defensive execution)
     window.addEventListener('DOMContentLoaded', () => {
+      let savedTheme = 'light';
+      try { savedTheme = localStorage.getItem('madero_theme') || 'light'; } catch (e) {}
+      applyTheme(savedTheme);
       bindDelegatedHandlers();
       updateAllViews();
       silentBackgroundSync();
