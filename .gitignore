@@ -2,9 +2,9 @@
 Thumbs.db
 *.log
 .env
+.env.*
 .env.local
-.vscode/
-
-
-.vercel
 .env*
+.vercel
+*.bak
+.vscode/
